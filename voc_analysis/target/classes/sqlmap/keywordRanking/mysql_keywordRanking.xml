@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="keywordRanking">
+
+    <!--  관심키워드 가져오기 -->
+ 	<select id="keywordRankingDAO.selectInterestKeyword" parameterClass="java.util.HashMap" resultClass="java.lang.String">
+			SELECT 
+			  T.KEYWORD 
+			FROM
+			  (
+			  SELECT 
+			    @RANK := @RANK + 1 AS ROWNUM,
+			    KEYWORD 
+			  FROM
+			        (
+				SELECT
+				    KEYWORD 
+				FROM CUT_KEYWORD
+				WHERE 
+					USE_YN='Y'
+					<isNotEmpty prepend="AND"  property="loginId">
+						<![CDATA[
+						REG_ID = #loginId#
+						]]>
+					</isNotEmpty>
+			        ) A,
+			        (SELECT @RANK := 0 FROM DUAL) B
+			  ) T
+	</select>
+	
+	 	<select id="voekeywordRankingDAO.selectInterestKeyword" parameterClass="java.util.HashMap" resultClass="java.lang.String">
+			SELECT 
+			  T.KEYWORD 
+			FROM
+			  (
+			  SELECT 
+			    @RANK := @RANK + 1 AS ROWNUM,
+			    KEYWORD 
+			  FROM
+			        (
+				SELECT
+				    KEYWORD 
+				FROM CUT_KEYWORD
+				WHERE USE_YN='Y'
+			        ) A,
+			        (SELECT @RANK := 0 FROM DUAL) B
+			  ) T
+			 <isNotEmpty prepend="WHERE" property="limit">
+				<![CDATA[
+					T.ROWNUM <= #limit#
+				]]>
+			</isNotEmpty>
+	</select>
+
+	
+</sqlMap>

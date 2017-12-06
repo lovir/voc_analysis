@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+  <groupId>VOC_TFT</groupId>
+  <artifactId>voc_analysis</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+  <name>voc_analysis</name>
+  <url>http://maven.apache.org</url>
+
+	<properties>
+		<spring.maven.artifact.version>3.0.5.RELEASE</spring.maven.artifact.version>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<project.lib.path>${project.basedir}/src/main/webapp/WEB-INF/lib</project.lib.path>
+		<java.version>1.8</java.version>	<!-- MariaDB JDBC Driver 2.1.2 때문에 1.8 사용 -->
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>mvn2</id>
+			<url>http://repo1.maven.org/maven2/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>egovframe</id>
+			<url>http://www.egovframe.go.kr/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		
+		<repository>
+            <id>mesir-repo</id>
+            <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
+        </repository>
+	</repositories>
+
+	<dependencies>
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${spring.maven.artifact.version}</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>egovframework.rte</groupId>
+		    <artifactId>egovframework.rte.fdl.cmmn</artifactId>
+		    <version>2.7.0</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>egovframework.rte</groupId>
+		    <artifactId>egovframework.rte.ptl.mvc</artifactId>
+		    <version>2.7.0</version>
+        </dependency>
+				
+        <dependency>
+		    <groupId>egovframework.rte</groupId>
+		    <artifactId>egovframework.rte.psl.dataaccess</artifactId>
+		    <version>2.7.0</version>
+        </dependency>
+        
+        <dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.fdl.idgnr</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+        
+       	<dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.fdl.property</artifactId>  
+			<version>2.7.0</version>
+		</dependency>
+        
+        <dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.6.11</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjrt</artifactId>
+		    <version>1.6.9</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>aopalliance</groupId>
+		    <artifactId>aopalliance</artifactId>
+		    <version>1.0</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.apache.ibatis</groupId>
+		    <artifactId>ibatis-sqlmap</artifactId>
+		    <version>2.3.4.726</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>javax.annotation</groupId>
+		    <artifactId>jsr250-api</artifactId>
+		    <version>1.0</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>servlet-api</artifactId>
+		    <scope>provided</scope>
+		    <version>2.5</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.3</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		    <version>1.1.1</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>commons-beanutils</groupId>
+		    <artifactId>commons-beanutils</artifactId>
+		    <version>1.8.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+
+	<!-- DBunit -->
+	<!--
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.8</version>
+		</dependency>
+	 -->
+	 
+	<!-- EMMA -->
+	<!--		
+		<dependency>
+			<groupId>emma</groupId>
+			<artifactId>emma</artifactId>
+			<version>2.1.5320</version>
+		</dependency>
+	 -->
+		
+        <dependency>
+		    <groupId>taglibs</groupId>
+		    <artifactId>standard</artifactId>
+		    <version>1.1.2</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>2.2</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		    <version>1.5.11</version>
+        </dependency>
+		
+        <dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.5.11</version>
+        </dependency>
+
+       	<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.3alpha-8</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf</groupId>
+			<artifactId>log4jdbc3</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.lazyluke</groupId>
+			<artifactId>log4jdbc-remix</artifactId>
+			<version>0.2.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+		</dependency>
+		
+		<dependency>
+	        <groupId>org.easymock</groupId>
+	        <artifactId>easymock</artifactId>
+	        <version>3.0</version>
+	     </dependency>
+		      
+	    <dependency>
+	        <groupId>commons-collections</groupId>
+	        <artifactId>commons-collections</artifactId>
+	        <version>3.2.1</version>       
+	      </dependency>	
+		
+		<dependency>
+	        <groupId>commons-digester</groupId>
+	        <artifactId>commons-digester</artifactId>
+	        <version>1.8</version>
+	    </dependency>
+	    
+		<dependency>
+	        <groupId>org.antlr</groupId>
+	        <artifactId>antlr</artifactId>
+	        <version>3.4</version>
+   		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.tiles</groupId>
+		    <artifactId>tiles-jsp</artifactId>
+		    <version>2.2.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.tiles</groupId>
+		    <artifactId>tiles-template</artifactId>
+		    <version>2.2.2</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.2-FINAL</version>
+        </dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-oracle</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-weblogic</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jboss</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sourceforge.jtds</groupId>
+			<artifactId>jtds</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+        <dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.6</version>
+		</dependency>	
+		
+		<dependency>
+		    <groupId>org.mariadb.jdbc</groupId>
+		    <artifactId>mariadb-java-client</artifactId>
+		    <version>2.1.2</version>
+		</dependency>
+
+		<!-- fileupload  -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<!-- DqXmlBuilderJ.java 에서 참조 -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom2</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+		<!-- 보안관련 - XSS Filter -->
+		<dependency>
+			<groupId>com.navercorp.lucy</groupId>
+			<artifactId>lucy-xss-servlet</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+	<!-- /src/main/webapp/WEB-INF/lib 위치한 외장 JAR들 -->
+		<!-- DQCAT 관련 참조 -->
+		<dependency>
+			<groupId>com.diquest.m2_context.jar</groupId>
+			<artifactId>m2_context.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m2_context.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m2_earth.jar</groupId>
+			<artifactId>m2_earth.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m2_earth.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m2_forge.jar</groupId>
+			<artifactId>m2_forge.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m2_forge.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m2_stargate.jar</groupId>
+			<artifactId>m2_stargate.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m2_stargate.jar</systemPath>
+		</dependency>
+		<!-- //DQCAT 관련 참조 -->
+		<!-- Mariner4 사전관리 관련 참조 -->
+		<dependency>
+			<groupId>com.diquest.commons.jar</groupId>
+			<artifactId>commons.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/commons.jar</systemPath>
+		</dependency>
+		<!-- Mariner4 관련 참조 -->
+		<dependency>
+			<groupId>com.diquest.m4_client.jar</groupId>
+			<artifactId>m4_client.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_client.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m4_common.jar</groupId>
+			<artifactId>m2_earth.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_common.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m4_core.jar</groupId>
+			<artifactId>m4_core.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_core.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m4_extension.jar</groupId>
+			<artifactId>m4_extension.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_extension.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m4_framework.jar</groupId>
+			<artifactId>m4_framework.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_framework.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m4_mgr.jar</groupId>
+			<artifactId>m4_mgr.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_mgr.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m4_server.jar</groupId>
+			<artifactId>m4_server.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_server.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.diquest.m4_util.jar</groupId>
+			<artifactId>m4_util.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/m4_util.jar</systemPath>
+		</dependency>
+		<!-- //Mariner4 관련 참조 -->
+		<!-- PRITER 참조 -->
+		<dependency>
+			<groupId>com.diquest.priter.jar</groupId>
+			<artifactId>priter.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/priter.jar</systemPath>
+		</dependency>
+		<!-- //PRITER 참조 -->
+		<!-- 외장 하이라이터 참조 -->
+		<dependency>
+			<groupId>com.diquest.dq_highlight.jar</groupId>
+			<artifactId>dq_highlight.jar</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/dq_highlight.jar</systemPath>
+		</dependency>
+		<!-- //외장 하이라이터 참조 -->
+	<!--// /src/main/webapp/WEB-INF/lib 위치한 외장 JAR들 -->
+	</dependencies>
+		
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<directory>${basedir}/target</directory>
+		<finalName>voc_analysis</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+                        <target>1.8</target>
+                        <encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>hibernate3-maven-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<components>
+							<component>
+								<name>hbm2ddl</name>
+								<implementation>annotationconfiguration</implementation>
+							</component>
+						</components>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>hsqldb</groupId>
+							<artifactId>hsqldb</artifactId>
+							<version>1.8.0.7</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<!-- EMMA   -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>emma-maven-plugin</artifactId>
+					<version>1.0-alpha-1</version>
+				</plugin>
+				<!-- PMD manven plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+					<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<!-- EMMA -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.16</version>
+				<configuration>
+					<skipTests>false</skipTests>
+					<forkMode>once</forkMode>
+					<reportFormat>xml</reportFormat>
+					<excludes>
+						<exclude>**/Abstract*.java</exclude>
+						<exclude>**/*Suite.java</exclude>
+					</excludes>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>emma-maven-plugin</artifactId>
+				<inherited>true</inherited>
+			</plugin>
+			<!--  JavaDoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+		</plugins>
+	</build>
+	<reporting>
+		<outputDirectory>${basedir}/target/site</outputDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.0.1</version>
+				<reportSets>
+					<reportSet>
+						<id>sunlink</id>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+						<inherited>true</inherited>
+						<configuration>
+							<links>
+								<link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
+							</links>
+						</configuration>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<!-- JUnit Test Results & EMMA Coverage Reporting -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>emma-maven-plugin</artifactId>
+				<inherited>true</inherited>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>surefire-report-maven-plugin</artifactId>
+				<inherited>true</inherited>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<!-- PMD manven plugin -->
+			<!--
+				<plugin> <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId> <version>2.4</version>
+				<configuration> <rulesets> <ruleset>./Ruleset.xml</ruleset>
+				</rulesets> <linkXref>true</linkXref>
+				<sourceEncoding>${encoding}</sourceEncoding>
+				<minimumTokens>100</minimumTokens>
+				<targetJdk>${compileSource}</targetJdk> </configuration>
+				<reportSets> <reportSet> <reports> <report>pmd</report> </reports>
+				</reportSet> </reportSets> </plugin>
+			-->
+			<!-- Generating JavaDoc Report -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>512m</maxmemory>
+					<encoding>${encoding}</encoding>
+					<docencoding>${encoding}</docencoding>
+					<charset>${encoding}</charset>
+				</configuration>
+			</plugin>
+			<!-- Generating Java Source in HTML -->
+			<plugin>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<configuration>
+					<inputEncoding>${encoding}</inputEncoding>
+					<outputEncoding>${encoding}</outputEncoding>
+					<linkJavadoc>true</linkJavadoc>
+					<javadocDir>apidocs</javadocDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>  
+</project>

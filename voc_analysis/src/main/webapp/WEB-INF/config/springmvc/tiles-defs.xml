@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!-- 서울메트로VOC는 태블로 솔루션에 iFrame으로 연동하기 때문에 Tiles 사용안함. -->
+<tiles-definitions>
+	
+	<definition name="layouts-tiles" template="/WEB-INF/jsp/common/layout.jsp">
+		<put-attribute name="header"    value="/WEB-INF/jsp/common/header.jsp" />
+		<put-attribute name="menu" 		value="/WEB-INF/jsp/common/menu.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/common/body.jsp" />
+		<put-attribute name="footer"    value="/WEB-INF/jsp/common/footer.jsp" />
+	</definition>
+	
+	<definition name="layouts-tiles2" template="/WEB-INF/jsp/common/layout2.jsp">
+		<put-attribute name="header"    value="/WEB-INF/jsp/common/header.jsp" />
+		<put-attribute name="menu" 		value="/WEB-INF/jsp/common/menu.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/common/body.jsp" />
+		<put-attribute name="footer"    value="/WEB-INF/jsp/common/footer.jsp" />
+	</definition>
+  
+ 	<!-- <definition name="/openApi/openApiInit" extends="layouts-tiles">
+		<put-attribute name="title" value="OPEN API" />
+		<put-attribute name="nav_2depth" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/openApi/openApiInit.jsp" />
+	</definition>
+	
+ 	<definition name="/common/regionSt" extends="layouts-tiles">
+		<put-attribute name="title" value="지역별현황분석" />
+		<put-attribute name="nav_2depth" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/regionSt.jsp" />
+	</definition>
+
+	<definition name="/common/emotionNl" extends="layouts-tiles">
+		<put-attribute name="title" value="감성분석" />
+		<put-attribute name="nav_2depth" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/emotionNl.jsp" />
+    </definition>
+ 
+	<definition name="/dashBoard/dashBoard" extends="layouts-tiles">
+		<put-attribute name="title" value="대시보드" />
+		<put-attribute name="nav_2depth" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dashBoard/dashBoard.jsp" />
+	</definition>
+	
+    <definition name="/keywordRanking/synthesisRanking" extends="layouts-tiles">
+        <put-attribute name="title" value="키워드 랭킹 분석 > 종합 랭킹" />
+        <put-attribute name="nav_2depth" value="종합 랭킹" />
+        <put-attribute name="body" value="/WEB-INF/jsp/keywordRanking/synthesisRanking.jsp" />
+    </definition>
+    
+    <definition name="/keywordRanking/interestRanking" extends="layouts-tiles">
+        <put-attribute name="title" value="키워드 랭킹 분석 > 관심 키워드 랭킹" />
+        <put-attribute name="nav_2depth" value="관심 키워드 랭킹" />
+        <put-attribute name="body" value="/WEB-INF/jsp/keywordRanking/interestRanking.jsp" />
+    </definition>
+    
+    <definition name="/keywordRanking/issueKeywordRanking" extends="layouts-tiles">
+        <put-attribute name="title" value="키워드 랭킹 분석 > 이슈 키워드 랭킹" />
+        <put-attribute name="nav_2depth" value="이슈 키워드 랭킹" />
+        <put-attribute name="body" value="/WEB-INF/jsp/keywordRanking/issueKeywordRanking.jsp" />
+    </definition>
+    
+     <definition name="/mainSearch/fieldInit" extends="layouts-tiles">
+        <put-attribute name="title" value="분야별현황분석" />
+        <put-attribute name="nav_2depth" value="분야별 현황분석" />
+        <put-attribute name="body" value="/WEB-INF/jsp/mainSearch/fieldInit.jsp" />
+    </definition>
+    
+ 	<definition name="/relation/relationAnalysis" extends="layouts-tiles">
+		<put-attribute name="title" value="연관도 분석 > 연관정보 분석" />
+		<put-attribute name="nav_2depth" value="연관정보 분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/relation/relationAnalysis.jsp" />
+	</definition>
+	
+	<definition name="/relation/relationAnalysisCompare" extends="layouts-tiles2">
+        <put-attribute name="title" value="연관도 분석 >  연관정보 비교분석" />
+        <put-attribute name="nav_2depth" value="연관정보 비교분석" />
+        <put-attribute name="body" value="/WEB-INF/jsp/relation/relationAnalysisCompare.jsp" />
+    </definition>
+    
+ 	<definition name="/trend/trendAnalysis" extends="layouts-tiles">
+		<put-attribute name="title" value="동향정보 분석 > 동향정보 분석" />
+		<put-attribute name="nav_2depth" value="동향정보 분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/trend/trendAnalysis.jsp" />
+	</definition>
+	
+	<definition name="/trend/trendAnalysisCompare" extends="layouts-tiles">
+		<put-attribute name="title" value="동향 정보 분석 >  동향정보 비교분석" />
+		<put-attribute name="nav_2depth" value="동향정보 비교분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/trend/trendAnalysisCompare.jsp" />
+	</definition>
+	
+	   <definition name="/report/customer" extends="layouts-tiles">
+        <put-attribute name="title" value="리포트 > 고객요구 유형" />
+        <put-attribute name="nav_2depth" value="고객요구 유형" />
+        <put-attribute name="body" value="/WEB-INF/jsp/report/customer.jsp" />
+    </definition>
+    
+    <definition name="/report/service" extends="layouts-tiles">
+        <put-attribute name="title" value="리포트 > 서비스 유형" />
+        <put-attribute name="nav_2depth" value="서비스 유형" />
+        <put-attribute name="body" value="/WEB-INF/jsp/report/service.jsp" />
+    </definition>
+    
+    <definition name="/report/result" extends="layouts-tiles">
+        <put-attribute name="title" value="리포트 > 처리결과 유형" />
+        <put-attribute name="nav_2depth" value="처리결과 유형" />
+        <put-attribute name="body" value="/WEB-INF/jsp/report/result.jsp" />
+    </definition>
+    
+    <definition name="/report/service_Customer" extends="layouts-tiles">
+        <put-attribute name="title" value="리포트 > 서비스유형-요구유형" />
+        <put-attribute name="nav_2depth" value="서비스유형-요구유형" />
+        <put-attribute name="body" value="/WEB-INF/jsp/report/service_Customer.jsp" />
+    </definition>
+    
+	 <definition name="/management/interestKeyword" extends="layouts-tiles">
+		<put-attribute name="title" value="관심키워드 관리" />
+		<put-attribute name="nav_2depth" value="관심키워드 관리" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/interestKeyword.jsp" />
+	</definition>
+	
+	<definition name="/management/alarmKeyword" extends="layouts-tiles">
+		<put-attribute name="title" value="알람키워드 관리" />
+		<put-attribute name="nav_2depth" value="알람 설정" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/alarmKeyword.jsp" />
+	</definition>
+	
+	<definition name="/management/standardAlarm" extends="layouts-tiles">
+		<put-attribute name="title" value="발생기준 관리" />
+		<put-attribute name="nav_2depth" value="알람 설정" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/standardAlarm.jsp" />
+	</definition>
+	
+	<definition name="/management/mailReceiver" extends="layouts-tiles">
+		<put-attribute name="title" value="메일수신자 관리" />
+		<put-attribute name="nav_2depth" value="알람 설정" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/mailReceiver.jsp" />
+	</definition>
+	
+	<definition name="/management/thesaurusDictionary" extends="layouts-tiles">
+		<put-attribute name="title" value="유의어 사전 관리" />
+		<put-attribute name="nav_2depth" value="사전 관리" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/thesaurusDictionary.jsp" />
+	</definition>
+	
+	<definition name="/management/userDictionary" extends="layouts-tiles">
+		<put-attribute name="title" value="사용자 사전 관리" />
+		<put-attribute name="nav_2depth" value="사전 관리" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/userDictionary.jsp" />
+	</definition>
+	
+	<definition name="/management/stopwordDictionary" extends="layouts-tiles">
+		<put-attribute name="title" value="불용어 사전 관리" />
+		<put-attribute name="nav_2depth" value="사전 관리" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/stopwordDictionary.jsp" />
+	</definition>
+	
+	<definition name="/management/userCompoundDictionary" extends="layouts-tiles">
+		<put-attribute name="title" value="사용자복합어사전 관리" />
+		<put-attribute name="nav_2depth" value="사전 관리" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/userCompoundDictionary.jsp" />
+	</definition>
+	
+	<definition name="/management/userManagement" extends="layouts-tiles">
+		<put-attribute name="title" value="환경설정 > 사용자 관리" />
+		<put-attribute name="nav_2depth" value="사용자 관리" />
+		<put-attribute name="body" value="/WEB-INF/jsp/management/userManagement.jsp" />
+	</definition>
+
+	<definition name="/complain/complainAnalysis" extends="layouts-tiles">
+		<put-attribute name="title" value="불만지수분석" />
+		<put-attribute name="nav_2depth" value="불만지수분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/complain/complainAnalysis.jsp" />
+	</definition>
+	
+	<definition name="/voeKeyword/voeSynthesisRanking" extends="layouts-tiles">
+		<put-attribute name="title" value=" 종합분석" />
+		<put-attribute name="nav_2depth" value=" 종합분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/voeKeyword/voeSynthesisRanking.jsp" />
+	</definition>
+	
+	<definition name="/voeKeyword/voeinterestRanking" extends="layouts-tiles">
+		<put-attribute name="title" value=" 관심키워드랭킹" />
+		<put-attribute name="nav_2depth" value=" 관심키워드랭킹" />
+		<put-attribute name="body" value="/WEB-INF/jsp/voeKeyword/voeinterestRanking.jsp" />
+	</definition>
+	
+	<definition name="/voeKeyword/voeissueKeywordRanking" extends="layouts-tiles">
+		<put-attribute name="title" value=" 이슈키워드랭킹" />
+		<put-attribute name="nav_2depth" value=" 이슈키워드랭킹" />
+		<put-attribute name="body" value="/WEB-INF/jsp/voeKeyword/voeissueKeywordRanking.jsp" />
+	</definition>
+	
+	<definition name="/voeTrend/voeTrendAnalysis" extends="layouts-tiles">
+		<put-attribute name="title" value=" 관심키워드랭킹" />
+		<put-attribute name="nav_2depth" value=" 관심키워드랭킹" />
+		<put-attribute name="body" value="/WEB-INF/jsp/voeTrend/voeTrendAnalysis.jsp" />
+	</definition>
+
+	<definition name="/relation/voerelationAnalysis" extends="layouts-tiles">
+		<put-attribute name="title" value=" 이슈키워드랭킹" />
+		<put-attribute name="nav_2depth" value=" 이슈키워드랭킹" />
+		<put-attribute name="body" value="/WEB-INF/jsp/relation/voerelationAnalysis.jsp" />
+	</definition>
+	
+	<definition name="/common/voeregionSt" extends="layouts-tiles">
+		<put-attribute name="title" value=" 지역별현황분석" />
+		<put-attribute name="nav_2depth" value=" 지역별현황분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/voeregionSt.jsp" />
+	</definition>
+	
+	<definition name="/mainSearch/voefieldInit" extends="layouts-tiles">
+		<put-attribute name="title" value=" 분야별현황분석" />
+		<put-attribute name="nav_2depth" value=" 분야별현황분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mainSearch/voefieldInit.jsp" />
+	</definition>	
+
+	<definition name="/common/voeEmotionNl" extends="layouts-tiles">
+		<put-attribute name="title" value=" 감성분석" />
+		<put-attribute name="nav_2depth" value=" 감성분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/voeEmotionNl.jsp" />
+	</definition>	
+	
+	<definition name="/voeKeyword/voeKeyword" extends="layouts-tiles">
+		<put-attribute name="title" value="키워드종합분석" />
+		<put-attribute name="nav_2depth" value="키워드종합분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/voeKeyword/voeKeyword.jsp" />
+	</definition>
+	
+	<definition name="/voeTrend/voeTrendAnalysis" extends="layouts-tiles">
+		<put-attribute name="title" value="제안트렌드 종합분석" />
+		<put-attribute name="nav_2depth" value="제안트렌드 종합분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/voeTrend/voeTrendAnalysis.jsp" />
+	</definition>
+	
+	<definition name="/voeTrend/voeTrendAnalysisCompare" extends="layouts-tiles">
+		<put-attribute name="title" value="제안트렌드 비교분석" />
+		<put-attribute name="nav_2depth" value="제안트렌드 종합분석" />
+		<put-attribute name="body" value="/WEB-INF/jsp/voeTrend/voeTrendAnalysisCompare.jsp" />
+	</definition>
+	
+	<definition name="/mainSearch/userSearch" extends="layouts-tiles">
+		<put-attribute name="title" value="고객명검색" />
+		<put-attribute name="nav_2depth" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mainSearch/userSearch.jsp" />
+	</definition>
+	
+	<definition name="/mainSearch/vocSearch" extends="layouts-tiles">
+		<put-attribute name="title" value="VOC" />
+		<put-attribute name="nav_2depth" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mainSearch/vocSearch.jsp" />
+	</definition>
+	
+	<definition name="/mainSearch/voeSearch" extends="layouts-tiles">
+		<put-attribute name="title" value="VOE" />
+		<put-attribute name="nav_2depth" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mainSearch/voeSearch.jsp" />
+	</definition> -->
+</tiles-definitions>

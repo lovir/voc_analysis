@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yy-MM-dd HH:mm:ss.SSS} %5p %C [%M :%L] %m%n" />
+        </layout>
+    </appender>
+
+	<appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/install/user/diquest/apache-tomcat-8.5.20/voc_analysis_log/voc_analysis.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyyMMdd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yy-MM-dd HH:mm:ss.SSS} %5p %C [%M :%L] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="dailyRollingSqlFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/install/user/diquest/apache-tomcat-8.5.20/voc_analysis_log/voc_analysis-sql.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyyMMdd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yy-MM-dd HH:mm:ss.SSS} %5p %C [%M :%L] %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<logger name="com.diquest.voc" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="console" />
+		<appender-ref ref="dailyRollingFile" /> 
+	</logger>
+	
+    <logger name="java.sql" additivity="false">
+    	<level value="ERROR"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="dailyRollingSqlFile" /> 
+    </logger>
+
+    <logger name="egovframework" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="console"/>
+         <!-- <appender-ref ref="dailyRollingFile" />  -->
+    </logger>
+
+	<!-- log SQL with timing information, post execution -->
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="console" />
+		<!-- <appender-ref ref="dailyRollingSqlFile" /> -->
+	</logger>
+
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="console" />
+		<appender-ref ref="dailyRollingFile" />
+	</root>
+
+</log4j:configuration>

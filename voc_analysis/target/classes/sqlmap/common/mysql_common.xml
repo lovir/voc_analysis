@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="common">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias alias="commonCode" type="com.diquest.voc.common.vo.CommonCodeVo" />
+	<typeAlias  alias="commonSelectBoxVo" type="com.diquest.voc.management.vo.CommonSelectBoxVo"/>
+	<typeAlias  alias="stationStatusVo" type="com.diquest.voc.statusStation.vo.stationStatusVo"/>
+	<typeAlias  alias="fieldStatusVo" type="com.diquest.voc.fieldStatus.vo.FieldStatusVo"/>
+	<!-- 서울 메트로 셀렉트 박스 쿼리 시작-->
+	<!-- VOC 카테고리 코드 리스트 -->
+	<resultMap id="vocCodeTypeList" class="com.diquest.voc.management.vo.CommonSelectBoxVo">
+		<result property="name" column="code_name"/>
+		<result property="code" column="code"/>
+	</resultMap>
+	<!-- 민원접수 분야 코드 리스트 -->
+	<resultMap id="vocPartTypeList" class="com.diquest.voc.management.vo.CommonSelectBoxVo">
+		<result property="name" column="code_name"/>
+		<result property="code" column="code"/>
+		<result property="pCat1Id" column="p_cat1_id"/>
+		<result property="pCat1Nm" column="p_cat1_name"/>
+		
+	</resultMap>
+	<!-- 민원접수 세부항목 리스트 -->
+	<resultMap id="vocItemTypeList" class="com.diquest.voc.management.vo.CommonSelectBoxVo">
+		<result property="name" column="code_name"/>
+		<result property="code" column="code"/>
+		<result property="pCat1Id" column="p_cat1_id"/>
+		<result property="pCat1Nm" column="p_cat1_name"/>
+		<result property="pCat2Id" column="p_cat2_id"/>
+		<result property="pCat2Nm" column="p_cat2_name"/>
+	</resultMap>
+	<!-- 콜센터,SMS 세부항목 리스트 -->
+	<resultMap id="callItemTypeList" class="com.diquest.voc.management.vo.CommonSelectBoxVo">
+		<result property="name" column="code_name"/>
+		<result property="code" column="code"/>
+		<result property="pCat2Id" column="p_cat2_id"/>
+		<result property="pCat2Nm" column="p_cat2_name"/>
+	</resultMap>
+	<!-- 서울메트로 부서 리스트 -->
+	<resultMap id="metroDeptList" class="com.diquest.voc.management.vo.CommonSelectBoxVo">
+		<result property="name" column="name"/>
+		<result property="code" column="code"/>
+	</resultMap>
+	<!-- VOC 카테고리 코드 리스트 -->
+	<resultMap id="dashList" class="hashmap">
+		<result property="name" column="code_name"/>
+		<result property="code" column="code"/>
+	</resultMap>
+<!-- 서울 메트로 셀렉트 박스 쿼리 종료-->
+
+	<!--  로그인 정보 가져오기 -->
+	<select id="commonDAO.selectLogin_S" parameterClass="java.util.HashMap" resultClass="egovMap">
+		<![CDATA[
+			SELECT USER_ID, 
+				DEP_CD, 
+				DEP_NM, 
+				USER_NM, 
+				PST_NM 
+			FROM CUT_USER
+			WHERE USER_ID=#loginId#
+		]]>
+	</select>
+	
+	<!--  로그인 정보 가져오기 -->
+	<select id="commonDAO.selectLogin_Checker" parameterClass="java.util.HashMap" resultClass="java.lang.String">
+		<![CDATA[
+			SELECT 'P' as Checker
+			FROM CUT_USER
+			WHERE USER_ID=#loginId# AND
+				PWD =#loginPwd#
+		]]>
+	</select>
+	
+	<!--  서울메트로 포탈 유저 이전 접속 여부 가져오기-->
+	<select id="commonDAO.selectLogin_Checker_Metro" parameterClass="java.util.HashMap" resultClass="java.lang.String">
+		<![CDATA[
+			SELECT USER_NM
+			FROM CUT_USER
+			WHERE USER_ID=#portal_id#
+		]]>
+	</select>
+	
+	<select id="commonDAO.selectVocCommonCode" parameterClass="java.util.HashMap" resultClass="commonCode">
+		<!-- SELECT ID AS id,
+			NAME AS name,
+			KIND AS kind,
+			CODE AS code,
+			P_CODE AS pCode
+		FROM voc_seoul_type
+		WHERE KIND=#kind#
+		<isNotEmpty property="id" prepend="AND">
+			id=#id#
+		</isNotEmpty> -->
+		SELECT CODE AS id,
+			CODE_NAME AS name,
+			CODE_TYPE AS kind,
+			CODE AS code,
+			P_CAT1_ID AS pCode1,
+			P_CAT2_ID AS pCode2,
+			P_CAT1_NAME AS pCode1Name,
+			P_CAT2_NAME AS pCode2Name
+		FROM COMMON_CODE
+		WHERE 
+			CODE_TYPE = #kind#
+			AND USE_YN = 'Y'
+		<isNotEmpty property="id" prepend="AND">
+			CODE = #id#
+		</isNotEmpty>
+	</select>
+<!-- 서울메트로 공통코드 조회 쿼리 시작 -->
+	<!-- 민원접수 채널 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocChannelTypeList" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCCHANNEL' 
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 소셜 채널 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.socialChannelTypeList" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'SOCIALCHANNEL'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty> 
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 민원접수 구분 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocRecTypeList" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCRECTYPE'
+	 	 <isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty> 
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 민원접수 유형(민원 대 카테고리) 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocKindTypeList" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCKIND'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>  
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 민원접수 분야(민원 중 카테고리) 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocPartTypeList" parameterClass="commonSelectBoxVo" resultMap="vocPartTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME , P_CAT1_ID, P_CAT1_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCPART'
+		 <isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>
+	 	 <isNotEmpty property="pCat1Id" prepend="AND">
+	 		P_CAT1_ID = #pCat1Id#
+	 	 </isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 민원접수 세부항목(민원 소 카테고리) 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocItemTypeList" parameterClass="commonSelectBoxVo" resultMap="vocItemTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME , P_CAT1_ID, P_CAT1_NAME, P_CAT2_ID, P_CAT2_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCITEM'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat1Id" prepend="AND">
+	 		P_CAT1_ID = #pCat1Id#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat2Id" prepend="AND">
+	 		P_CAT2_ID = #pCat2Id#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 콜센터 분야(콜센터 대 카테고리) 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocCallKindTypeList" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CALL_KIND'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>   
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 콜센터 분야(콜센터 중 카테고리) 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocCallPartTypeList" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CALL_PART'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 민원접수 세부항목(콜센터 소 카테고리) 리스트 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocCallItemTypeList" parameterClass="commonSelectBoxVo" resultMap="callItemTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME, P_CAT2_ID, P_CAT2_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CALL_ITEM'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>
+	 	 <isNotEmpty property="pCat2Id" prepend="AND">
+	 		P_CAT2_ID = #pCat2Id#
+	 	 </isNotEmpty> 
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 처리 부서 목룍 리스트 조회(DB.Table : metro_bigdb.TCNCOMDEPT) -->
+	<select id="commonSelectBoxDAO.metroDeptList" parameterClass="commonSelectBoxVo" resultMap="metroDeptList">
+		SELECT 
+			CDDEPT as CODE, DEPTNAME as NAME
+		FROM 
+			metro_bigdb.TCNCOMDEPT
+		WHERE
+			1 = 1
+		<isNotEmpty property="code" prepend="AND">
+	 		CDDEPT = #code#
+	 	 </isNotEmpty>
+	</select>
+	
+	<!-- 민원접수 채널 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocChannelType" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCCHANNEL' 
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 소셜 채널 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.socialChannelType" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'SOCIALCHANNEL'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty> 
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	<!-- 민원접수 구분 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocRecType" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCRECTYPE'
+	 	 <isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty> 
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	<!-- 민원접수 유형(민원 대 카테고리) 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocKindType" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCKIND'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>  
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	<!-- 민원접수 분야(민원 중 카테고리) 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocPartType" parameterClass="commonSelectBoxVo" resultMap="vocPartTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME , P_CAT1_ID, P_CAT1_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCPART'
+		 <isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>
+	 	 <isNotEmpty property="pCat1Id" prepend="AND">
+	 		P_CAT1_ID = #pCat1Id#
+	 	 </isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	<!-- 민원접수 세부항목(민원 소 카테고리) 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocItemType" parameterClass="commonSelectBoxVo" resultMap="vocItemTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME , P_CAT1_ID, P_CAT1_NAME, P_CAT2_ID, P_CAT2_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCITEM'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat1Id" prepend="AND">
+	 		P_CAT1_ID = #pCat1Id#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat2Id" prepend="AND">
+	 		P_CAT2_ID = #pCat2Id#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	<!-- 콜센터 분야(콜센터 대 카테고리) 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocCallKindType" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CALL_KIND'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>   
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	<!-- 콜센터 분야(콜센터 중 카테고리) 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocCallPartType" parameterClass="commonSelectBoxVo" resultMap="vocCodeTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CALL_PART'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	<!-- 민원접수 세부항목(콜센터 소 카테고리) 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.vocCallItemType" parameterClass="commonSelectBoxVo" resultMap="callItemTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME, P_CAT2_ID, P_CAT2_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CALL_ITEM'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>
+	 	 <isNotEmpty property="pCat2Id" prepend="AND">
+	 		P_CAT2_ID = #pCat2Id#
+	 	 </isNotEmpty> 
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	
+	<!-- 민원접수 세부항목(민원+콜센터 소 카테고리) 조회(DB.Table : VOC.COMMON_CODE)  : LJG -->
+	<select id="commonSelectBoxDAO.ItemType" parameterClass="commonSelectBoxVo" resultMap="vocItemTypeList">
+		 SELECT 
+		 	CODE, CODE_NAME , P_CAT1_ID, P_CAT1_NAME, P_CAT2_ID, P_CAT2_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND ( CODE_TYPE = 'CDVOCITEM' OR CODE_TYPE = 'CALL_ITEM' )
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat1Id" prepend="AND">
+	 		P_CAT1_ID = #pCat1Id#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat2Id" prepend="AND">
+	 		P_CAT2_ID = #pCat2Id#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+		 LIMIT 1
+	</select>
+	
+	<!-- 처리 부서 목룍 조회(DB.Table : metro_bigdb.TCNCOMDEPT) -->
+	<select id="commonSelectBoxDAO.metroDept" parameterClass="commonSelectBoxVo" resultMap="metroDeptList">
+		SELECT 
+			CDDEPT as CODE, DEPTNAME as NAME
+		FROM 
+			metro_bigdb.TCNCOMDEPT
+		WHERE
+			1 = 1
+		<isNotEmpty property="code" prepend="AND">
+	 		CDDEPT = #code#
+	 	 </isNotEmpty>
+	</select>
+	<!-- 서울메트로 라인 조회(DB.Table : voc.station_info) -->
+	<select id="stationStatusDAO.stationLine" parameterClass="java.lang.String" resultClass="string">
+		SELECT 
+			LINE
+		FROM 
+			STATION_INFO
+		WHERE
+			1 = 1
+		<!-- <isNotEmpty property="stationName" prepend="AND"> -->
+		AND
+	 		STATION_NAME = #stationName#
+	 	ORDER BY 
+	 		LINE ASC
+	 	<!--  </isNotEmpty> -->
+	</select>
+	
+	<!-- 처리 부서 목룍 리스트 조회(DB.Table : metro_bigdb.TCNCOMDEPT) -->
+	<select id="stationStatusDAO.metroList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+			CDDEPT as CODE,
+			DEPTNAME as NAME
+		FROM 
+			metro_bigdb.TCNCOMDEPT
+		WHERE
+			CDDEPT
+			<iterate prepend="IN" property="codeList" open="(" close=")" conjunction=",">
+				#codeList[]#
+			</iterate>
+	</select>
+	
+	<!-- 분야별 현황 민원접수 세부항목(콜센터 소 카테고리) 리스트 조회(DB.Table : VOC.COMMON_CODE) -->
+	<select id="fieldStatusDAO.fieldCallItemName" parameterClass="fieldStatusVo" resultClass="string">
+		 SELECT 
+		 	CODE_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CALL_ITEM'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	 </isNotEmpty>
+	 	 <isNotEmpty property="pCat2Id" prepend="AND">
+	 		P_CAT2_ID = #pCat2Id#
+	 	 </isNotEmpty> 
+		 ORDER BY ORDER_NO ASC
+	</select>
+	<!-- 분야별 현황 민원접수 세부항목(민원 소 카테고리) 조회(DB.Table : VOC.COMMON_CODE) -->
+	<select id="fieldStatusDAO.fieldItemName" parameterClass="fieldStatusVo" resultClass="string">
+		 SELECT 
+		 	CODE_NAME
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+		 	AND CODE_TYPE = 'CDVOCITEM'
+	 	<isNotEmpty property="code" prepend="AND">
+	 		CODE = #code#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat1Id" prepend="AND">
+	 		P_CAT1_ID = #pCat1Id#
+	 	</isNotEmpty>
+	 	<isNotEmpty property="pCat2Id" prepend="AND">
+	 		P_CAT2_ID = #pCat2Id#
+	 	</isNotEmpty>
+		 ORDER BY ORDER_NO ASC
+	</select>
+	
+	<!-- 뉴스 전체 누적건수 조회(DB.Table : metro_bigdb.ST_VOC010_L) -->
+	<select id="socialKeywordRankingDAO.selectNewsAll" resultMap="vocCodeTypeList">
+		select 
+			A.SITE_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC010_L A group by A.SITE_NM
+	</select>
+	<!-- 뉴스 오늘 수집건수 조회(DB.Table : metro_bigdb.ST_VOC010_L) -->
+	<select id="socialKeywordRankingDAO.selectNewsToday" resultMap="vocCodeTypeList">
+		select 
+			A.SITE_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC010_L A 
+		where A.REGIST_DT > STR_TO_DATE(DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') 
+		group by A.SITE_NM
+	</select>
+	<!-- 사이트 전체 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectSiteAll" resultMap="vocCodeTypeList">
+		select A.SITE_NM as CODE_NAME, 
+			count(*) as CODE
+		from metro_bigdb.ST_VOC011_L A 
+		group by A.SITE_NM
+	</select>
+	<!-- 사이트 현재 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectSiteToday" resultMap="vocCodeTypeList">
+		select A.SITE_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC011_L A 
+		WHERE A.REGIST_DT > STR_TO_DATE(DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') 
+		group by A.SITE_NM
+	</select>
+	<!-- Sns facebook 전체 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectFacebookAll" resultMap="vocCodeTypeList">
+		select A.CTGRY_NM as CODE_NAME, 
+			count(*) as CODE
+		from metro_bigdb.ST_VOC009_L A 
+		where A.TY = 'message' group by A.CTGRY_NM
+	</select>
+	<!-- Sns facebook 현재 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectFacebookToday" resultMap="vocCodeTypeList">
+		select A.CTGRY_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC009_L A 
+		where A.TY = 'message' AND A.REGIST_DT > STR_TO_DATE(DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') 
+		group by A.CTGRY_NM
+	</select>
+	<!-- Sns twitter 전체 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectTwitterAll" resultMap="vocCodeTypeList">
+		select A.CTGRY_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC012_L A 
+		group by A.CTGRY_NM
+	</select>
+	<!-- Sns twitter 현재 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectTwitterToday" resultMap="vocCodeTypeList">
+		select A.CTGRY_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC012_L A 
+		where A.REGIST_DT > STR_TO_DATE(DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') 
+		group by A.CTGRY_NM 
+	</select>
+	<!-- community 전체 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectCommunityAll" resultMap="vocCodeTypeList">
+		select A.SITE_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC008_L A 
+		group by A.SITE_NM
+	</select>
+	<!-- community 현재 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="socialKeywordRankingDAO.selectCommunityToday" resultMap="vocCodeTypeList">
+		select A.SITE_NM as CODE_NAME, 
+			count(*) as CODE 
+		from metro_bigdb.ST_VOC008_L A 
+		WHERE A.REGIST_DT > STR_TO_DATE(DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s') 
+		group by A.SITE_NM
+	</select>
+	<!-- dashboard 현재 수집건수 조회(DB.Table : metro_bigdb.ST_VOC011_L) -->
+	<select id="dashBoardDAO.selectkind" resultMap="dashList">
+		SELECT 
+			CODE, CODE_NAME 
+		 FROM 
+		 	COMMON_CODE
+		 WHERE 
+		 	USE_YN = 'Y' 
+			AND (CODE = '10'
+			OR CODE = '20'
+			OR CODE = '30')
+			AND CODE_TYPE = 'CDVOCKIND'
+			OR (CODE = 'INQ'
+			OR CODE = 'INC'
+			OR CODE = 'PRA')
+			AND CODE_TYPE = 'CALL_KIND'
+	</select>
+	<select id="dashBoardDAO.selectItem" parameterClass="java.lang.String" resultMap="dashList">
+	 		
+	 	SELECT 
+			CODE, CODE_NAME 
+		FROM 
+		 	COMMON_CODE
+		WHERE 
+		 	USE_YN = 'Y' 
+		AND
+		(CODE = #code# AND CODE_TYPE='CALL_ITEM')
+		OR
+		(CODE = #code# AND CODE_TYPE='CDVOCITEM')
+	</select>
+<!-- 서울메트로 공통코드 조회 쿼리 종료 -->
+</sqlMap>

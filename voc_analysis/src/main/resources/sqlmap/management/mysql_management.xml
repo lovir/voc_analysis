@@ -1,0 +1,1246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="management">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="interestKeywordVo" type="com.diquest.voc.management.vo.InterestKeywordVo"/>
+	<typeAlias  alias="alarmKeywordVo" type="com.diquest.voc.management.vo.AlarmKeywordVo"/>
+	<typeAlias  alias="alarmKeywordMonitoringVo" type="com.diquest.voc.management.vo.AlarmKeywordMonitoringVo"/>
+	<typeAlias  alias="mailReceiverVo" type="com.diquest.voc.management.vo.MailReceiverVo"/>
+	<typeAlias  alias="userManagementVo" type="com.diquest.voc.management.vo.UserManagementVo"/>
+	<typeAlias  alias="standardAlarmVo" type="com.diquest.voc.management.vo.StandardAlarmVo"/>
+	
+	<resultMap id="alarmKeywordMonitoring" class="com.diquest.voc.management.vo.AlarmKeywordMonitoringVo">
+		<result property="keyword" column="keyword"/>
+	</resultMap>
+	
+	<resultMap id="alarmKeyword" class="com.diquest.voc.management.vo.AlarmKeywordVo">
+		<result property="regId" column="reg_id"/>
+		<result property="regNm" column="reg_nm"/>
+		<result property="keyword" column="keyword"/>
+		<result property="orgNm" column="org_nm"/>
+		<result property="useYn" column="use_yn"/>
+		<result property="etc" column="etc"/>
+		<result property="no" column="no"/>
+		<result property="regDate" column="reg_date"/>
+	</resultMap>
+	
+	<resultMap id="interestKeyword" class="com.diquest.voc.management.vo.InterestKeywordVo">
+		<result property="regId" column="reg_id"/>
+		<result property="regNm" column="reg_nm"/>
+		<result property="keyword" column="keyword"/>
+		<result property="orgNm" column="org_nm"/>
+		<result property="useYn" column="use_yn"/>
+		<result property="etc" column="etc"/>
+		<result property="no" column="no"/>
+		<result property="regDate" column="reg_date"/>
+		<result property="dashYn" column="dash_Yn"/>
+	</resultMap>
+
+	<resultMap id="standardAlarm" class="com.diquest.voc.management.vo.StandardAlarmVo">
+		<result property="no" column="no"/>
+		<result property="regId" column="reg_id"/>
+		<result property="level1" column="level_1"/>
+		<result property="level2" column="level_2"/>
+		<result property="level3" column="level_3"/>
+	</resultMap>
+	
+	<resultMap id="mailReceiver" class="com.diquest.voc.management.vo.MailReceiverVo">
+		<result property="no" column="no"/>
+		<result property="org" column="org"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="regId" column="reg_id"/>
+		<result property="regDate" column="reg_date"/>
+		<result property="regYn" column="reg_yn"/>
+	</resultMap>
+	
+	<resultMap id="userManagement" class="com.diquest.voc.management.vo.UserManagementVo">
+		<result property="no" column="no"/>
+		<result property="org" column="org"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="regId" column="reg_id"/>
+		<result property="regDate" column="reg_date"/>
+		<result property="regYn" column="reg_yn"/>
+	</resultMap>
+
+<!--  관심키워드 관리 -->
+
+	<!-- 관심키워드 등록 -->
+	<insert id="interestDAO.insertInterestKeyword">
+		INSERT INTO CUT_KEYWORD 
+			(KEYWORD
+			,ORG_NM
+			,REG_NM
+			,REG_ID
+			,REG_DATE
+			,USE_YN
+			,ETC
+			,DASH_YN
+			)
+		VALUES (#keyword#
+			  , #orgNm#
+			  , #regNm#
+			  , #regId#
+			  , DATE_FORMAT(NOW(),'%Y-%m-%d')
+			  , #useYn#
+			  , #etc#
+			  ,'Y'
+			)
+	</insert>
+	<!-- //관심키워드 등록 -->
+	
+	<!-- //관심키워드 수정 -->
+	<update id="interestDAO.updateInterestKeyword">
+		<![CDATA[
+			UPDATE CUT_KEYWORD 
+			SET KEYWORD=#keyword#
+				, USE_YN=#useYn#
+				, ETC=#etc#
+			WHERE NO=#no#
+		]]>
+	</update>
+	<!-- //관심키워드 수정 -->
+	
+	<!-- 키워드 활성/비활성 관심키워드 수정 -->
+	<update id="interestDAO.updateInterestKeywordUseYn">
+		<![CDATA[
+			UPDATE CUT_KEYWORD 
+			SET USE_YN=#useYn#
+			WHERE NO=#no#
+		]]>
+	</update>
+	<!-- //키워드 활성/비활성 관심키워드 수정 -->
+	
+	<!-- 키워드 대시보드 활성/비활성 관심키워드 수정 -->
+	<update id="interestDAO.updateInterestKeywordDashYn">
+		<![CDATA[
+			UPDATE CUT_KEYWORD 
+			SET DASH_YN=#dashYn#
+			WHERE NO=#no#
+		]]>
+	</update>
+	<!-- //키워드 대시보드 활성/비활성 관심키워드 수정 -->
+	
+	<!-- 관심키워드 삭제 -->
+	<delete id="interestDAO.deleteInterestKeyword">
+			DELETE FROM CUT_KEYWORD 
+			WHERE NO IN
+			<iterate property="selectedNo" open="(" close=")" conjunction=",">
+				#selectedNo[]# 
+			</iterate>
+	</delete>
+	<!-- //관심키워드 삭제 -->
+	
+	<!-- 관심키워드 상세조회 -->
+	<select id="interestDAO.selectInterestKeyword" resultMap="interestKeyword">
+		<![CDATA[
+			SELECT
+				NO
+				,KEYWORD
+				,ORG_NM
+				,REG_NM
+				,REG_ID
+				,DATE_FORMAT(REG_DATE, '%Y/%m/%d') AS REG_DATE
+				,USE_YN
+				,ETC
+				,DASH_YN
+			FROM CUT_KEYWORD 
+			WHERE NO=#no#
+		]]>
+	</select>
+	<!-- //관심키워드 상세조회 -->
+	
+	<!-- 활성/비활성이 Y인 관심키워드 건수 조회 -->
+	<select id="interestDAO.selectInterestKeywordListUseYnTotCnt" parameterClass="interestKeywordVo" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CUT_KEYWORD
+			WHERE 
+				USE_YN = 'Y'
+				AND REG_ID = #regId#
+	</select>
+	<!-- //활성/비활성이 Y인 관심키워드 건수 조회회 -->
+	
+	<!-- 관심키워드 목록 조회 -->
+	<select id="interestDAO.selectInterestKeywordList" parameterClass="interestKeywordVo" resultMap="interestKeyword">
+		<![CDATA[
+		SELECT 
+			* 
+		FROM 
+			(SELECT
+				 @RANK := @RANK + 1 AS RNUM
+				,NO
+				,KEYWORD
+				,ORG_NM
+				,REG_NM
+				,REG_ID
+				,DATE_FORMAT(REG_DATE, '%Y/%m/%d') AS REG_DATE
+				,USE_YN
+				,ETC
+				,DASH_YN
+			FROM CUT_KEYWORD
+			WHERE REG_ID = #regId#
+	      	ORDER BY REG_DATE DESC
+	      ) a,
+	      (SELECT @RANK := 0 FROM DUAL) b
+		WHERE RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+		]]>
+		<isNotEmpty property="keyword">
+			<isEqual prepend="AND" property="condition" compareValue="1">
+				<![CDATA[KEYWORD LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="2">
+				<![CDATA[ETC LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="3">
+				<![CDATA[ORG_NM LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="4">
+				<![CDATA[REG_NM LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+		</isNotEmpty>
+	</select>
+	<!-- //관심키워드 목록 조회 -->
+	
+	<!-- 관심키워드 전체 건수 조회 -->
+	<select id="interestDAO.selectInterestKeywordListTotCnt" parameterClass="interestKeywordVo" resultClass="int">
+
+		SELECT COUNT(*) totcnt
+		FROM CUT_KEYWORD
+		WHERE 1=1
+		AND REG_ID = #regId#
+		<isNotEmpty property="keyword">
+			<isEqual prepend="AND" property="condition" compareValue="1">
+				<![CDATA[KEYWORD LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="2">
+				<![CDATA[ETC LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="3">
+				<![CDATA[ORG_NM LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="4">
+				<![CDATA[REG_NM LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+		</isNotEmpty>
+	</select>
+	<!-- //관심키워드 전체 건수 조회 -->
+	
+	<!-- 대시보드 활성/비활성이 Y인 관심키워드 건수 조회 -->
+	<select id="interestDAO.selectInterestKeywordListDashYnTotCnt" parameterClass="interestKeywordVo" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CUT_KEYWORD
+			WHERE 
+				DASH_YN = 'Y'
+				AND REG_ID = #regId#
+	</select>
+	<!-- //대시보드 활성/비활성이 Y인 관심키워드 건수 조회 -->
+	
+	<!-- 관심키워드 목록 조회 (차트표시용) -->
+	<select id="interestDAO.selectInterestKeywordListTop10" parameterClass="interestKeywordVo" resultClass="egovMap">
+		<![CDATA[
+			SELECT
+				KEYWORD
+			FROM CUT_KEYWORD
+			WHERE USE_YN = 'Y'
+			AND REG_ID = #regId#
+		]]>
+	</select>
+	<!-- //관심키워드 목록 조회 -->
+	
+	<!-- 관심키워드 목록 조회 (대시보드 차트표시용) -->
+	<select id="interestDAO.selectInterestKeywordListDashYn" parameterClass="interestKeywordVo" resultClass="egovMap">
+		<![CDATA[
+			SELECT
+				KEYWORD
+			FROM CUT_KEYWORD
+			WHERE 
+				DASH_YN = 'Y'
+				AND REG_ID = #regId#
+		]]>
+	</select>
+	<!-- //관심키워드 목록 조회 -->
+	
+<!--  //관심키워드 관리 종료 -->
+
+<!-- 알람 키워드 관리 시작 -->
+	<!--  알람 키워드 등록 (DB.Tabel : CUT_ALM_KEYWORD) : JSH -->
+	<update id="alarmKeywordDAO.insertAlarmKeyword" parameterClass="alarmKeywordVo">
+		<![CDATA[
+			INSERT INTO CUT_ALM_KEYWORD 
+				(KEYWORD
+				,ORG_NM
+				,REG_NM
+				,REG_ID
+				,REG_DATE
+				,USE_YN
+				,ETC
+				 )
+			VALUES (
+				#keyword#
+				, #orgNm#
+				, #regNm#
+				, #regId#
+				, NOW()
+				, #useYn#
+				, #etc#
+				)
+		]]>
+	</update>
+	<!--  //알람 키워드 등록 : JSH -->
+	
+	<!--  알람 키워드 수정 (DB.Tabel : CUT_ALM_KEYWORD) : JSH -->
+	<update id="alarmKeywordDAO.updateAlarmKeyword">
+		<![CDATA[
+			UPDATE CUT_ALM_KEYWORD 
+			SET KEYWORD=#keyword#
+				, USE_YN=#useYn#
+				, ETC=#etc#
+				, ORG_NM=#orgNm#
+				, REG_NM=#regNm#
+				, REG_ID=#regId#
+			WHERE NO=#no#
+		]]>
+	</update>
+	<!--  //알람 키워드 수정 (DB.Tabel : CUT_ALM_KEYWORD) : JSH -->
+	
+	<!--  알람 키워드 삭제 (DB.Tabel : CUT_ALM_KEYWORD) : JSH -->
+	<delete id="alarmKeywordDAO.deleteAlarmKeyword">
+			DELETE FROM CUT_ALM_KEYWORD 
+			WHERE NO IN
+			<iterate property="selectedNo" open="(" close=")" conjunction=",">
+				#selectedNo[]# 
+			</iterate>
+	</delete>
+	<!--  //알람 키워드 삭제 (DB.Tabel : CUT_ALM_KEYWORD) : JSH -->
+	
+	<!-- 선택 된 키워드 조회 (DB.Tabel : CUT_ALM_KEYWORD) : JSH  -->
+	<select id="alarmKeywordDAO.selectAlarmKeyword" resultMap="alarmKeyword">
+		<![CDATA[
+			SELECT
+				NO
+				,KEYWORD
+				,ORG_NM
+				,REG_NM
+				,REG_ID
+				,DATE_FORMAT(REG_DATE, '%Y/%m/%d') AS REG_DATE
+				,USE_YN
+				,ETC
+			FROM CUT_ALM_KEYWORD 
+			WHERE NO=#no#
+		]]>
+	</select>
+	<!-- //선택 된 키워드 조회 (DB.Tabel : CUT_ALM_KEYWORD) : JSH  -->
+	
+	<!-- 알람 키워드 리스트 (DB.Table : CUT_ALM_KEYWORD)  : JSH -->
+	<select id="alarmKeywordDAO.selectAlarmKeywordList" parameterClass="alarmKeywordVo" resultMap="alarmKeyword">
+		<![CDATA[
+		SELECT 
+		  A.NO, A.KEYWORD, A.ORG_NM, A.REG_NM, A.REG_ID, A.REG_DATE,A.USE_YN, A.ETC
+		FROM 
+		  (	SELECT 
+							NO
+							,KEYWORD
+							,ORG_NM
+							,REG_NM
+							,REG_ID
+							,DATE_FORMAT(REG_DATE, '%Y/%m/%d') AS REG_DATE
+							,USE_YN
+							,ETC
+							,@RANK := @RANK + 1 AS RNUM
+						FROM CUT_ALM_KEYWORD
+						WHERE REG_ID = #regId#
+		        ORDER BY REG_DATE DESC
+		  ) A,
+		  (SELECT @RANK := 0 FROM DUAL) B
+		WHERE A.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+			
+		]]>
+	</select>
+	<!-- // 알람 키워드 리스트 : JSH -->
+	
+	<!--  활성화 된 알람키워드 갯수 조회 (DB.Table : CUT_ALM_KEYWORD)  : JSH  -->
+	<select id="alarmKeywordDAO.checkAlarmRegYnCount" parameterClass="alarmKeywordVo"  resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CUT_ALM_KEYWORD
+			WHERE USE_YN = 'Y'
+				AND REG_ID = #regId#
+	</select>
+	<!--  //활성화 된 알람키워드 갯수 조회 : JSH  -->
+	
+	<!-- DB에 저장된 알람키워드 전체 갯수를 조회회한다. (DB.Table : CUT_ALM_KEYWORD) : JSH -->
+	<select id="alarmKeywordDAO.selectAlarmKeywordListTotCnt" parameterClass="alarmKeywordVo" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CUT_ALM_KEYWORD
+			WHERE REG_ID = #regId#
+	</select>
+	
+	<!-- 알람키워드 모니터링 리스트 ??? 대쉬보드에서 사용??? -->
+	<select id="alarmKeywordDAO.selectAlarmKeywordMonitoringList" parameterClass="alarmKeywordMonitoringVo" resultMap="alarmKeywordMonitoring">
+
+			SELECT 
+				T1.KEYWORD 
+			 FROM CUT_ALM_KEYWORD T1
+			WHERE
+				T1.USE_YN = 'Y'
+				AND T1.REG_ID = #regId#
+			 <isNotEmpty prepend="AND" property="selectedKeyword">
+				 	T1.KEYWORD IN 
+				<iterate property="selectedKeyword" open="(" close=")" conjunction=",">
+					#selectedKeyword[]# 
+				</iterate>
+			</isNotEmpty>
+	</select>
+	<!--// 알람키워드 모니터링 리스트 ??? 대쉬보드에서 사용??? -->
+	
+	<!-- 알람 키워드 발생기준 신규 입력 -->
+	<update id="standardAlarmDAO.insertStandardAlarm" parameterClass="standardAlarmVo">
+		<![CDATA[
+			INSERT INTO CUT_ALM_MANAGE
+				(REG_ID
+				,REG_DATE
+				,LEVEL_1
+				,LEVEL_2
+				,LEVEL_3 )
+			VALUES( #regId#
+					, NOW()
+					, #level1#
+					, #level2#
+					, #level3# )
+		]]>
+	</update>
+	<!-- //알람 키워드 발생기준 신규 입력 -->
+	
+	<!-- 알람 키워드 발생기준 수정 -->
+	<update id="standardAlarmDAO.updateStandardAlarm" parameterClass="standardAlarmVo">
+		<![CDATA[
+			UPDATE CUT_ALM_MANAGE
+			SET
+				REG_DATE = NOW()
+				,LEVEL_1 = #level1#
+				,LEVEL_2 = #level2#
+				,LEVEL_3 = #level3#
+			WHERE NO = #no#
+				AND REG_ID = #regId#
+		]]>
+	</update>
+	<!-- //알람 키워드 발생기준 수정 -->
+	
+	<!-- 알람 키워드 발생기준 조회 -->
+	<select id="standardAlarmDAO.selectStandardAlarm" parameterClass="standardAlarmVo" resultMap="standardAlarm">
+		<![CDATA[
+			SELECT
+				NO
+				,REG_ID
+				,LEVEL_1
+				,LEVEL_2
+				,LEVEL_3
+			FROM CUT_ALM_MANAGE
+			WHERE REG_ID = #regId#
+		]]>
+	</select>
+	<!--// 알람 키워드 발생기준 조회 -->
+<!-- //알람 키워드 관리 종료 -->
+
+<!-- 메일 수신 관리 시작 -->	
+	<!-- 메일수신자에 등록된 사용자를 조회한다 (DB.table : CUT_ALM_MAIL ): JSH -->
+	<select id="mailReceiverDAO.selectMailReceiverList" parameterClass="mailReceiverVo" resultMap="mailReceiver">
+		<![CDATA[
+		SELECT NO, ORG, NAME, EMAIL, REG_ID, REG_DATE, REG_YN
+		FROM (
+			SELECT
+				NO
+				,ORG
+				,NAME
+				,EMAIL
+				,REG_ID
+				,DATE_FORMAT(REG_DATE, '%Y/%m/%d') AS REG_DATE
+				,REG_YN
+				,ROW_NUMBER() OVER (ORDER BY NO DESC) AS RNUM 
+			FROM CUT_ALM_MAIL 
+			WHERE 1=1
+			]]>
+			<isNotEmpty property="keyword">
+				<isEqual prepend="AND" property="condition" compareValue="1">
+					<![CDATA[ORG LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="2">
+					<![CDATA[NAME LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="3">
+					<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="4">
+					<![CDATA[REG_ID LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+			</isNotEmpty>
+		<![CDATA[
+		) A 
+		WHERE A.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+		]]>
+	</select>
+	<!-- //메일수신자에 등록된 사용자를 조회한다 (DB.table : CUT_ALM_MAIL ): JSH -->
+	
+	<!-- 메일수신자에 등록된 사용자를 Count조회한다 (DB.table : CUT_ALM_MAIL ): JSH -->
+	<select id="mailReceiverDAO.selectMailReceiverListTotCnt" parameterClass="mailReceiverVo" resultClass="int">
+
+			SELECT COUNT(*) totcnt
+			FROM CUT_ALM_MAIL
+			WHERE 1=1
+			<isNotEmpty property="keyword">
+				<isEqual prepend="AND" property="condition" compareValue="1">
+					<![CDATA[ORG LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="2">
+					<![CDATA[NAME LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="3">
+					<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="4">
+					<![CDATA[REG_ID LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+			</isNotEmpty>
+	</select>
+	<!-- //메일수신자에 등록된 사용자를 Count조회한다 (DB.table : CUT_ALM_MAIL ): JSH -->
+	
+	<!-- 메일수신자에 사용자가 등록되어 있는지 Count조회한다 (DB.table : CUT_ALM_MAIL ): 서울메트로 -->
+	<select id="mailReceiverDAO.selectMailReceiverExist" parameterClass="mailReceiverVo" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CUT_ALM_MAIL
+			WHERE REG_ID = #regId#
+	</select>
+	<!-- //메일수신자에 사용자가 등록되어 있는지 Count조회한다 (DB.table : CUT_ALM_MAIL ): 서울메트로 -->
+	
+	<!-- 특정 사용자가 등록한 수신 메일주소를 조회한다. (DB.table : CUT_ALM_MAIL ): 서울메트로 -->
+	<select id="mailReceiverDAO.selectMail" parameterClass="mailReceiverVo" resultClass="String">
+			SELECT EMAIL
+			FROM CUT_ALM_MAIL
+			WHERE REG_ID = #regId#
+	</select>
+	<!-- 메일수신자에 등록할 사용자 조회 (DB.table : CUT_USER ): JSH -->
+	<select id="mailReceiverDAO.selectMailReceiverAddUserList" parameterClass="mailReceiverVo" resultMap="mailReceiver">
+		<![CDATA[
+		SELECT NO, ORG, NAME, EMAIL, PHONE, REG_ID, REG_DATE, REG_YN
+		FROM       
+			(SELECT
+					USER_ID AS NO , 
+			       DEP_NM AS ORG , 
+			       USER_NM AS NAME , 
+			       EMAIL , 
+			       CNTCPLC AS PHONE , 
+			       USER_ID AS REG_ID , 
+			       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE , 
+			       RTM_YN AS REG_YN,
+					(@RNUM := @RNUM + 1) AS RNUM 
+			FROM CUT_USER,
+			( SELECT @RNUM := 0 ) R
+			WHERE USER_ID NOT IN (SELECT REG_ID FROM CUT_ALM_MAIL)
+			AND USER_ID IN
+			]]>
+			<isNotNull property="regIdArr">
+				<iterate property="regIdArr" open="(" close=")" conjunction=",">
+					<![CDATA[#regIdArr[]#]]>
+				</iterate>
+			</isNotNull>
+			<isNull property="regIdArr">
+				<![CDATA[('')]]>
+			</isNull>
+			<isNotEmpty property="keyword">
+				<isEqual prepend="AND" property="condition" compareValue="1">
+					<![CDATA[ORG LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="2">
+					<![CDATA[NAME LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="3">
+					<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="4">
+					<![CDATA[REG_ID LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+			</isNotEmpty>
+			<![CDATA[
+			) A 
+			WHERE A.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+			]]>
+	</select>
+	<!-- //메일수신자에 등록할 사용자 조회 (DB.table : CUT_USER ): JSH -->
+	
+	<!-- 메일수신자에 등록 가능한 전체사용자 조회 (DB.table : CUT_USER ): JSH -->
+	<select id="mailReceiverDAO.selectMailReceiverAddUserListCnt" parameterClass="mailReceiverVo" resultMap="mailReceiver">
+		<![CDATA[
+		SELECT NO, ORG, NAME, EMAIL, PHONE, REG_ID, REG_DATE, REG_YN
+		FROM       
+			(SELECT
+					USER_ID AS NO , 
+			       DEP_NM AS ORG , 
+			       USER_NM AS NAME , 
+			       EMAIL , 
+			       CNTCPLC AS PHONE , 
+			       USER_ID AS REG_ID , 
+			       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE , 
+			       RTM_YN AS REG_YN,
+					(@RNUM := @RNUM + 1) AS RNUM 
+			FROM CUT_USER,
+			( SELECT @RNUM := 0 ) R
+			WHERE USER_ID NOT IN (SELECT REG_ID FROM CUT_ALM_MAIL)
+			]]>
+			<isNotEmpty property="keyword">
+				<isEqual prepend="AND" property="condition" compareValue="1">
+					<![CDATA[ORG LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="2">
+					<![CDATA[NAME LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="3">
+					<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="4">
+					<![CDATA[REG_ID LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+			</isNotEmpty>
+			<![CDATA[
+			) A 
+			]]>
+	</select>
+	<!-- //메일수신자에 등록 가능한 전체사용자 조회 (DB.table : CUT_USER ): JSH -->
+	
+	<!-- KBVOC.CUT_USER 조회 (DB.table : KBVOC.CUT_USER ): JSH -->
+	<select id="mailReceiverDAO.selectKbvocCutUser" resultClass="string">
+		<![CDATA[
+			SELECT USER_ID FROM CUT_USER
+		]]>
+	</select>
+	<!-- //KBVOC.CUT_USER 조회 (DB.table : KBVOC.CUT_USER ): JSH -->
+	
+	<!-- 메일수신자에 등록할 사용자 조회 (DB.Table : CUT_USER) : JSH-->
+	<select id="mailReceiverDAO.selectMailAddUserList" parameterClass="mailReceiverVo" resultMap="mailReceiver">
+			<![CDATA[
+				SELECT
+					USER_ID AS NO , 
+			       DEP_NM AS ORG , 
+			       USER_NM AS NAME , 
+			       EMAIL , 
+			       CNTCPLC AS PHONE , 
+			       USER_ID AS REG_ID , 
+			       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE , 
+			       RTM_YN AS REG_YN,
+					USER_ID
+			FROM CUT_USER,
+				WHERE USER_ID IN
+			]]>
+			<iterate property="selectedNo" open="(" close=")" conjunction=",">
+				<![CDATA[#selectedNo[]# ]]>
+			</iterate>
+	</select>
+	<!-- //메일수신자에 등록할 사용자 조회 -->
+	
+	<!-- 메일 수신자를 등록한다. (DB.Table : CUT_ALM_MAIL) : LZG 서울메트로용-->
+	<insert id="mailReceiverDAO.insertMailAddUser" parameterClass="mailReceiverVo" >
+		<![CDATA[
+			INSERT INTO CUT_ALM_MAIL 
+		       ( ORG
+				,NAME
+				,EMAIL
+				,REG_ID
+				,REG_DATE
+				,REG_YN
+		       ) 
+		     VALUES
+		       (#org#
+		        ,#name#
+		        ,#email#
+		        ,#regId#
+		        ,NOW()
+		        ,'Y'
+		       )
+	       ]]>
+	</insert>
+	<!-- //메일 수신자를 등록한다. -->
+	
+	<!-- 메일 수신정보를 수정한다. (DB.Table : CUT_ALM_MAIL) : LZG 서울메트로용-->
+	<update id="mailReceiverDAO.updateMailAddUser" parameterClass="mailReceiverVo" >
+		<![CDATA[
+			UPDATE CUT_ALM_MAIL 
+				SET	ORG = #org#
+					,NAME = #name#
+					,EMAIL = #email#
+					,REG_DATE = NOW()
+			WHERE
+				REG_ID = #regId# 
+			]]>
+	</update>
+	<!-- //메일 수신자를 등록한다. -->
+	
+	<!-- 등록된 메일 수신자 삭제한다.(DB.Table : CUT_ALM_MAIL) : 서울메트로용 -->
+	<delete id="mailReceiverDAO.deleteMailReceiver" parameterClass="mailReceiverVo" >
+			DELETE FROM CUT_ALM_MAIL 
+			WHERE REG_ID = #regId#
+	</delete>
+	<!-- //등록된 메일 수신자 삭제한다. -->
+<!-- //메일 수신 관리 종료 -->	
+
+	<!-- 등록 된 사용자 리스트 출력 (DB.Table : CUT_USER) : JSH-->
+	<select id="userManagementDAO.selectUserManagementList" parameterClass="userManagementVo" resultMap="userManagement" remapResults="true">
+		<![CDATA[
+		SELECT NO, ORG, NAME, EMAIL, PHONE, REG_ID, REG_DATE, REG_YN
+		FROM       
+			(SELECT
+					USER_ID AS NO , 
+			       DEP_NM AS ORG , 
+			       USER_NM AS NAME , 
+			       EMAIL , 
+			       CNTCPLC AS PHONE , 
+			       USER_ID AS REG_ID , 
+			       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE , 
+			       RTM_YN AS REG_YN,
+					(@RNUM := @RNUM + 1) AS RNUM 
+			FROM CUT_USER,
+			( SELECT @RNUM := 0 ) R
+			WHERE RTM_YN = #regYn#
+			AND USER_ID IN
+			]]>
+			
+			<isNotNull property="regIdArr">
+				<iterate property="regIdArr" open="(" close=")" conjunction=",">
+					<![CDATA[#regIdArr[]#]]>
+				</iterate>
+			</isNotNull>
+			<isNull property="regIdArr">
+				<![CDATA[('')]]>
+			</isNull>
+			
+			<isNotEmpty property="keyword">
+				<isEqual prepend="AND" property="condition" compareValue="1">
+					<![CDATA[ORG LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="2">
+					<![CDATA[NAME LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="3">
+					<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="4">
+					<![CDATA[PHONE LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+			</isNotEmpty>
+			<![CDATA[
+			) A 
+			WHERE A.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+			]]>
+	</select>
+	<!-- //등록 된 사용자 리스트 출력 -->
+	
+	<!-- 등록 된 사용자 리스트 출력 Count (DB.Table : CUT_USER) : JSH-->
+	<select id="userManagementDAO.selectUserManagementListCnt" parameterClass="userManagementVo" resultMap="userManagement" remapResults="true">
+		<![CDATA[
+		SELECT NO, ORG, NAME, EMAIL, PHONE, REG_ID, REG_DATE, REG_YN
+		FROM       
+			(SELECT
+					USER_ID AS NO , 
+			       DEP_NM AS ORG , 
+			       USER_NM AS NAME , 
+			       EMAIL , 
+			       CNTCPLC AS PHONE , 
+			       USER_ID AS REG_ID , 
+			       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE , 
+			       RTM_YN AS REG_YN,
+					(@RNUM := @RNUM + 1) AS RNUM 
+			FROM CUT_USER,
+			( SELECT @RNUM := 0 ) R
+			WHERE RTM_YN = #regYn#
+			]]>
+			<isNotEmpty property="keyword">
+				<isEqual prepend="AND" property="condition" compareValue="1">
+					<![CDATA[ORG LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="2">
+					<![CDATA[NAME LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="3">
+					<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+				<isEqual prepend="AND" property="condition" compareValue="4">
+					<![CDATA[PHONE LIKE '%'||#keyword#||'%']]>
+				</isEqual>
+			</isNotEmpty>
+			<![CDATA[
+			) A 
+			]]>
+	</select>
+	<!-- //등록 된 사용자 리스트 Count 출력 -->
+	
+	<!-- KBVOC.CUT_USER 조회 (DB.table : KBVOC.CUT_USER ): JSH -->
+	<select id="userManagementDAO.selectKbvocCutUser" resultClass="string">
+		<![CDATA[
+			SELECT USER_ID FROM CUT_USER WHERE RTM_YN = 'N'
+		]]>
+	</select>
+	<!-- //KBVOC.CUT_USER 조회 (DB.table : KBVOC.CUT_USER ): JSH -->
+	
+	<!-- CUT_USER 조회(등록된 사용자) (DB.table : CUT_USER ): JSH -->
+	<select id="userManagementDAO.selectKbactCutUser" resultClass="string">
+		<![CDATA[
+			SELECT USER_ID FROM CUT_USER
+		]]>
+	</select>
+	<!-- //CUT_USER 조회(등록된 사용자) (DB.table : CUT_USER ): JSH -->
+	
+	<!-- 등록할 사용자 리스트 출력 (DB.Table : KBVOC.CUT_USER) : JSH-->
+	<select id="userManagementDAO.selectAddUserManagementList" parameterClass="userManagementVo" resultMap="userManagement" remapResults="true">
+			<![CDATA[
+			SELECT NO, ORG, NAME, EMAIL, PHONE, REG_ID, REG_DATE, REG_YN
+			FROM       
+				(SELECT
+						USER_ID AS NO , 
+				       DEP_NM AS ORG , 
+				       USER_NM AS NAME , 
+				       EMAIL , 
+				       CNTCPLC AS PHONE , 
+				       USER_ID AS REG_ID , 
+				       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE , 
+				       RTM_YN AS REG_YN,
+						(@RNUM := @RNUM + 1) AS RNUM 
+				FROM CUT_USER,
+				( SELECT @RNUM := 0 ) R
+				]]>
+				<isNotEmpty property="keyword">
+					<isEqual prepend="AND" property="condition" compareValue="1">
+						<![CDATA[DEP_NM LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+					<isEqual prepend="AND" property="condition" compareValue="2">
+						<![CDATA[USER_NM LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+					<isEqual prepend="AND" property="condition" compareValue="3">
+						<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+					<isEqual prepend="AND" property="condition" compareValue="4">
+						<![CDATA[CNTCPLC LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+				</isNotEmpty>
+				<![CDATA[
+				) A 
+				WHERE A.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+				]]>
+	</select>
+	<!-- //등록할 사용자 리스트 출력 -->
+	
+	<!-- 등록할 사용자 Count 출력 (DB.Table : KBVOC.CUT_USER) : JSH-->
+	<select id="userManagementDAO.selectAddUserManagementListTotCnt" parameterClass="userManagementVo" resultClass="string">
+			<![CDATA[
+			SELECT REG_ID
+		FROM       
+			(SELECT
+			       USER_ID AS REG_ID , 
+					(@RNUM := @RNUM + 1) AS RNUM 
+			FROM CUT_USER,
+			( SELECT @RNUM := 0 ) R
+				]]>
+				<isNotEmpty property="keyword">
+					<isEqual prepend="AND" property="condition" compareValue="1">
+						<![CDATA[DEP_NM LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+					<isEqual prepend="AND" property="condition" compareValue="2">
+						<![CDATA[USER_NM LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+					<isEqual prepend="AND" property="condition" compareValue="3">
+						<![CDATA[EMAIL LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+					<isEqual prepend="AND" property="condition" compareValue="4">
+						<![CDATA[CNTCPLC LIKE '%'||#keyword#||'%']]>
+					</isEqual>
+				</isNotEmpty>
+				<![CDATA[
+				) A 
+				]]>
+	</select>
+	<!-- //등록할 사용자 Count 출력 -->
+	
+	<!-- 등록 대상 사용자 조회 (DB.Table : KBVOC.CUT_USER) : JSH-->
+	<select id="userManagementDAO.addUserList" parameterClass="userManagementVo" resultMap="userManagement">
+		<!-- <![CDATA[
+		
+		SELECT
+					USER_ID AS NO , 
+			       DEP_NM AS ORG , 
+			       USER_NM AS NAME , 
+			       EMAIL , 
+			       CNTCPLC AS PHONE , 
+			       USER_ID AS REG_ID , 
+			       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE , 
+			       RTM_YN AS REG_YN
+			FROM CUT_USER
+			WHERE USER_ID IN
+			]]>
+			<iterate property="selectedId" open="(" close=")" conjunction=",">
+				<![CDATA[#selectedId[]# ]]>
+			</iterate> -->
+		<![CDATA[
+		
+		SELECT
+			       USER_NM AS NAME , 
+			       USER_ID AS REG_ID , 
+			       DATE_FORMAT(REG_DTTM, '%Y/%m/%d') AS REG_DATE 
+			FROM CUT_USER
+			WHERE USER_ID IN
+			]]>
+			<iterate property="selectedId" open="(" close=")" conjunction=",">
+				<![CDATA[#selectedId[]# ]]>
+			</iterate>
+	</select>
+	<!-- //등록 대상 사용자 조회 -->
+	
+	<!-- 사용자를 등록한다. (DB.Table : CUT_USER) : 서울메트로. 사용자ID,사용자 이름 전달받아 저장.-->
+	<insert id="userManagementDAO.insertUserManagement" parameterClass="userManagementVo" >
+		<!-- <![CDATA[
+		INSERT INTO CUT_USER 
+	       ( NO
+	       	,ORG
+	       	,NAME
+	       	,EMAIL
+	       	,PHONE
+	       	,REG_ID
+	       	,REG_DATE
+	       	,REG_YN
+	       	,USER_ID
+	       ) 
+	     VALUES
+	       (
+	       	SEQ_CUT_USER_NO.NEXTVAL
+	        ,#org#
+	        ,#name#
+	        ,#email#
+	        ,#phone#
+	        ,#no#
+	        ,SYSDATE
+	        ,#regYn#
+	        ,#regId#
+	       )
+	       ]]> -->
+		<![CDATA[
+		INSERT INTO CUT_USER 
+	       ( USER_ID
+	         ,USER_NM
+	         ,REG_DTTM
+	       ) 
+	     VALUES
+	       (
+	        #regId#
+	        ,#name#
+	        ,NOW()
+	       )
+	       ]]>
+	</insert>
+	<!-- //사용자를 등록한다. -->
+	
+	<!-- 등록된 사용자를 삭제한다.(DB.Table : CUT_USER) : JSH-->
+	<delete id="userManagementDAO.deleteUserManagement" parameterClass="userManagementVo">
+		<![CDATA[
+		DELETE FROM CUT_USER 
+			WHERE USER_ID IN
+		]]>
+		<iterate property="selectedNo" open="(" close=")" conjunction=",">
+			<![CDATA[#selectedNo[]# ]]>
+		</iterate>
+	</delete>
+	<!-- //등록된 사용자를 삭제한다. -->
+	
+<!--  불용어 관리 -->
+
+	<!-- 불용어 리스트 조회 -->
+	<select id="stopWordDAO.selectStopwordList" resultClass="egovMap">
+		SELECT 
+			* 
+		FROM 
+			(SELECT ROW_NUMBER() OVER(ORDER BY REG_DATE DESC) RNUM, 
+				NO , 
+				KEYWORD , 
+				REG_ID , 
+				DATE_FORMAT(REG_DATE, '%Y/%m/%d') AS REG_DATE , 
+				APPLY_YN 
+				FROM CUT_KB_STOPWORD
+			)
+		WHERE 
+			RNUM BETWEEN ((#currentPage#-1)*#pageSize#)+1 AND (#currentPage#*#pageSize#)
+		<isNotEmpty property="keyword">
+			<isEqual prepend="AND" property="condition" compareValue="01">
+				<![CDATA[KEYWORD LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="02">
+				<![CDATA[REG_ID LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+		</isNotEmpty>
+	</select>
+	<!-- //불용어 리스트 조회 -->
+	
+	<!-- 불용어 총 개수 조회 -->
+	<select id="stopWordDAO.selectStopwordCnt" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CUT_KB_STOPWORD
+			WHERE 1=1
+		<isNotEmpty property="keyword">
+			<isEqual prepend="AND" property="condition" compareValue="01">
+				<![CDATA[KEYWORD LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+			<isEqual prepend="AND" property="condition" compareValue="02">
+				<![CDATA[REG_ID LIKE CONCAT('%', #keyword# , '%' )]]>
+			</isEqual>
+		</isNotEmpty>
+	</select>
+	<!-- //불용어 총 개수 조회 -->
+	
+	<!-- 불용어 등록 여부 조회 -->
+	<select id="stopWordDAO.selectStopword" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CUT_KB_STOPWORD
+			WHERE KEYWORD LIKE #keyword#
+	</select>
+	<!-- //불용어 등록 여부 조회 -->
+	
+	<!-- 불용어 등록 -->
+	<insert id="stopWordDAO.insertStopword" >
+			INSERT INTO CUT_KB_STOPWORD (
+				NO
+				,KEYWORD
+				,REG_ID
+				,REG_DATE
+				,APPLY_YN
+			)
+			VALUES (
+				SEQ_STOPWORD_NO.NEXTVAL 
+				,#keyword#
+				, #loginId#
+				, NOW()
+				, 'N'
+				) 
+	</insert>
+	<!-- //불용어 등록 -->
+	
+	<!-- 불용어 삭제 -->
+	<delete id="stopWordDAO.deleteStopword">
+		DELETE FROM CUT_KB_STOPWORD
+		WHERE NO IN
+		<iterate open="(" close=")" conjunction=",">
+			#[]# 
+		</iterate>
+	</delete>
+	<!-- //불용어 삭제 -->
+	
+	<!-- 불용어 적용 -->
+	<update id="stopWordDAO.applyStopword">
+		UPDATE CUT_KB_STOPWORD SET 			 
+			REG_DATE = NOW()
+			,APPLY_YN = 'Y' 
+		WHERE NO IN
+		<iterate open="(" close=")" conjunction=",">
+			#[]# 
+		</iterate>
+	</update>
+	<!-- //불용어 적용 -->
+	
+<!--  //불용어 관리 -->
+
+<!-- OpenAPI 관리 -->
+	<!-- 자동 분류 추천 전체 누적 건수 조회 -->
+	<select id="openApiDAO.selectTotalCategorizeCount" resultClass="string">
+		SELECT count(*) as LOG_COUNT from DQCAT.M2_LOG_FULL
+	</select>
+	<!-- //자동 분류 추천 전체 누적 건수 조회 -->
+	<!-- 서울시 일별 기상 관측 정보 전체 누적 건수 조회 -->
+	<select id="openApiDAO.selectTotalWeatherObserveCount" resultClass="string">
+		SELECT count(*) as LOG_COUNT from metro_bigdb.ST_VOC013_L
+	</select>
+	<!-- //서울시 일별 기상 관측 정보 전체 누적 건수 조회 -->
+	<!-- 서울시 일별 기상 예측 정보 전체 누적 건수 조회 -->
+	<select id="openApiDAO.selectTotalWeatherForecastCount" resultClass="string">
+		SELECT count(*) as LOG_COUNT from metro_bigdb.ST_VOC014_L
+	</select>
+	<!-- //서울시 일별 기상 예측 정보 전체 누적 건수 조회 -->
+	<!-- 서울시 일별 기상 관측 정보 오늘 수집 건수 조회 -->
+	<select id="openApiDAO.selectTodayWeatherObserveCount" resultClass="string">
+		SELECT 
+			count(*) as COUNT 
+		from 
+			metro_bigdb.ST_VOC013_L
+		WHERE
+			REGIST_DT > STR_TO_DATE(DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s')
+	</select>
+	<!--//서울시 일별 기상 관측 정보 오늘 수집 건수 조회 -->
+	<!-- 서울시 일별 기상 예측 정보 오늘 수집 건수 조회 -->
+	<select id="openApiDAO.selectTodayWeatherForecastCount" resultClass="string">
+		SELECT 
+			count(*) as COUNT 
+		from 
+			metro_bigdb.ST_VOC014_L
+		WHERE
+			REGIST_DT > STR_TO_DATE(DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'),'%Y-%m-%d %H:%i:%s')
+	</select>
+	<!--//서울시 일별 기상 예측 정보 오늘 수집 건수 조회 -->
+	<!-- 자동 분류 추천 일자건수 조회 -->
+	<select id="openApiDAO.selectDayCategorizeCount" resultClass="string">
+		SELECT COUNT(*) AS DAY_COUNT
+		FROM
+		(
+			SELECT 
+				DATE_FORMAT(REG_DATE,'%Y년 %m월 %d일') as DATE_STR
+			from 
+				DQCAT.M2_LOG_FULL
+			GROUP BY DATE_FORMAT(REG_DATE,'%Y년 %m월%d일')
+		) A
+	</select>
+	<!-- //자동 분류 추천 일자건수 조회 -->
+	<!-- 서울시 일별 기상 관측 정보 일자건수 조회 -->
+	<select id="openApiDAO.selectDayWeatherObserveCount" resultClass="string">
+		SELECT COUNT(*) AS DAY_COUNT
+		FROM
+		(
+			SELECT 
+				DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일') as DATE_STR
+			from 
+				metro_bigdb.ST_VOC013_L
+			GROUP BY DATE_FORMAT(REGIST_DT,'%Y년 %m월%d일')
+		) A
+	</select>
+	<!-- //서울시 일별 기상 관측 정보 일자건수 조회 -->
+	<!-- 서울시 일별 기상 예측 정보 일자건수 조회 -->
+	<select id="openApiDAO.selectDayWeatherForecastCount" resultClass="string">
+		SELECT COUNT(*) AS DAY_COUNT
+		FROM
+		(
+			SELECT 
+				DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일') as DATE_STR
+			from 
+				metro_bigdb.ST_VOC014_L
+			GROUP BY DATE_FORMAT(REGIST_DT,'%Y년 %m월%d일')
+		) A
+	</select>
+	<!-- //서울시 일별 기상 예측 정보 일자건수 조회 -->
+	<!-- 자동 분류 추천 일자별 리스트 조회 -->
+	<select id="openApiDAO.selectDayCategorizeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT *
+		FROM
+		(
+			SELECT
+				D.DATE_STR
+				,D.LOG_COUNT
+				,D.ACM_COUNT
+				,@RANK := @RANK + 1 AS RNUM
+			FROM
+			(
+				SELECT
+					 C.DATE_STR
+					,C.LOG_COUNT
+					,C.ACM_COUNT
+				FROM 
+				(
+					SELECT
+						 A.DATE_STR
+						,A.LOG_COUNT
+						,@ACM_COUNT_A := @ACM_COUNT_A + A.LOG_COUNT AS ACM_COUNT 
+					FROM
+						(
+							SELECT 
+								DATE_FORMAT(REG_DATE,'%Y년 %m월 %d일') as DATE_STR
+								, count(*) as LOG_COUNT
+							from 
+								DQCAT.M2_LOG_FULL
+							GROUP BY DATE_FORMAT(REG_DATE,'%Y년 %m월%d일')
+							ORDER BY DATE_FORMAT(REG_DATE,'%Y년 %m월%d일') ASC
+						) A
+						,(SELECT @ACM_COUNT_A :=0 FROM DUAL) B
+				) C
+				ORDER BY C.DATE_STR DESC
+			) D
+			,(SELECT @RANK :=0 FROM DUAL) F
+		) E
+		WHERE E.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+	</select>
+	<!--//자동 분류 추천 일자별 리스트 조회 -->
+	<!-- 서울시 일별 기상 관측 정보 일자별 리스트 조회 -->
+	<select id="openApiDAO.selectDayWeatherObserveList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT *
+		FROM
+		(
+			SELECT
+				D.DATE_STR
+				,D.LOG_COUNT
+				,D.ACM_COUNT
+				,@RANK := @RANK + 1 AS RNUM
+			FROM
+			(
+				SELECT
+					 C.DATE_STR
+					,C.LOG_COUNT
+					,C.ACM_COUNT
+				FROM 
+				(
+					SELECT
+						 A.DATE_STR
+						,A.LOG_COUNT
+						,@ACM_COUNT_A := @ACM_COUNT_A + A.LOG_COUNT AS ACM_COUNT 
+					FROM
+						(
+							SELECT 
+								DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일') AS DATE_STR 
+								, count(*) as LOG_COUNT 
+							from 
+								metro_bigdb.ST_VOC013_L
+							GROUP BY DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일')
+							ORDER BY DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일') ASC
+						) A
+						,(SELECT @ACM_COUNT_A :=0 FROM DUAL) B
+				) C
+				ORDER BY C.DATE_STR DESC
+			) D
+			,(SELECT @RANK :=0 FROM DUAL) F
+		) E
+		WHERE E.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+	</select>
+	<!--//서울시 일별 기상 관측 정보 일자별 리스트 조회 -->
+	<!-- 서울시 일별 기상 예측 정보 일자별 리스트 조회 -->
+	<select id="openApiDAO.selectDayCWeatherForecastList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT *
+		FROM
+		(
+			SELECT
+				D.DATE_STR
+				,D.LOG_COUNT
+				,D.ACM_COUNT
+				,@RANK := @RANK + 1 AS RNUM
+			FROM
+			(
+				SELECT
+					 C.DATE_STR
+					,C.LOG_COUNT
+					,C.ACM_COUNT
+				FROM 
+				(
+					SELECT
+						 A.DATE_STR
+						,A.LOG_COUNT
+						,@ACM_COUNT_A := @ACM_COUNT_A + A.LOG_COUNT AS ACM_COUNT 
+					FROM
+						(
+							SELECT 
+								DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일') AS DATE_STR 
+								, count(*) as LOG_COUNT 
+							from 
+								metro_bigdb.ST_VOC014_L
+							GROUP BY DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일')
+							ORDER BY DATE_FORMAT(REGIST_DT,'%Y년 %m월 %d일') ASC
+						) A
+						,(SELECT @ACM_COUNT_A :=0 FROM DUAL) B
+				) C
+				ORDER BY C.DATE_STR DESC
+			) D
+			,(SELECT @RANK :=0 FROM DUAL) F
+		) E
+		WHERE E.RNUM BETWEEN ((#currentPageNo#-1)*#pageSize#)+1 AND (#currentPageNo#*#pageSize#)
+	</select>
+	<!--//서울시 일별 기상 예측 정보 일자별 리스트 조회 -->
+<!--//OpenAPI 관리 -->
+</sqlMap>

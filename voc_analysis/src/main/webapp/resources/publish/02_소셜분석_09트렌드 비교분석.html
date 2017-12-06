@@ -1,0 +1,915 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>서울교통공사 : 연관도 비교 분석</title>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/datepicker_kr.js"></script>
+<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
+<script type="text/javascript" src="js/modal.basic.js"></script>
+
+</head>
+<body>
+
+<div id="skipnavi">
+	<ul>
+	<li><a href="#content">주메뉴 바로가기</a></li>
+	<li><a href="#cont_body">본문 바로가기</a></li>
+	</ul>
+</div>
+<hr />
+<div id="wrapper">
+
+	<!-- header start -->
+  <!--// header end -->
+
+<hr />
+
+
+	<!-- content start -->
+	<div id="content">
+
+		<div class="cont">
+
+			
+
+			<!-- right area start -->
+			<div class="right_area">
+				
+
+				<!-- 본문 start -->
+				<div class="cont_body" id="cont_body">
+				
+					<div class="cont_head">
+						<span class="cont_tit">트렌드 비교 분석</span><span class="cont_desc">주제어에 대한 연관정보 비교 분석결과를 제공합니다.</span>
+					</div>
+
+					<div class="clear2">
+
+						<!--left contents start -->
+						<div class="float_l win_half">
+
+							<!-- 분석조건 A start -->
+							<div class="win win_full">
+							
+								<div class="win_contarea no_head">
+
+									<p class="nowin_tit">분석조건 A</p>
+
+									<fieldset><legend>분석조건 A</legend>
+									<div class="box_blue">
+
+										<ul class="terms_list type05">
+											<li>
+												<span><label for="select01">조회구분</label></span>
+												<select id="select01" title="조회구분 선택">
+													<option>일별</option>
+													<option>주별</option>
+													<option>월별</option>
+													<option>분기별</option>
+													<option>반기별</option>
+													<option>년별</option>
+												</select>
+											</li>
+											<li class="terms_w_auto2">
+												<span><label for="select02">분석기간</label></span>
+												<select id="select02" class="view_datepicker float_l" title="분석기간 선택">
+													<option>최근1주일</option>
+													<option>최근1개월</option>
+													<option>최근3개월</option>
+													<option>최근6개월</option>
+													<option>최근1년</option>
+													<option>최근3년</option>
+													<option value="addDate">직접입력</option>
+												</select>
+												<div class="add_date a_right">
+													<input type="text" class="w100px date_time white hasDatepicker" title="시작날짜 입력" id="dp1507616747373"><img class="ui-datepicker-trigger" src="images/common/btn_calendar.gif" alt="..." title="..."> ~ <input type="text" class="w100px date_time white hasDatepicker" title="마지막날짜 입력" id="dp1507616747374"><img class="ui-datepicker-trigger" src="images/common/btn_calendar.gif" alt="..." title="...">
+												</div>
+											</li>
+											<li>
+												<span><label for="select03">채널</label></span>
+												<select id="select03" title="채널">
+													<option>고객의소리</option>
+													<option>업무제안</option>
+													<option>매체제안</option>
+													<option>상품제안</option>
+													<option>영업제안</option>
+													<option>경영제도</option>
+												</select>
+											</li>
+											
+											
+										</ul>
+										<hr class="terms_line">
+										<ul class="terms_list type05">
+											<li class="terms_w_auto2">
+												<span><label for="select08">주제어 입력</label></span>
+                                                <select id="select08" title="주제어 선택">
+													<option>직접입력</option>
+                                                    <option>열차지연</option>
+												</select>
+												<input type="text" id="select08" class="white w150p" title="주제어 입력">
+											</li>
+											<li class="terms_w_auto2 mb_5 mt_20" style="margin-right: 0px;">
+												<span><label for="select08">제외어 입력</label></span>
+												<input type="text" id="select08" class="white w300px mb_5" title="제외어 입력">
+												<br>제외키워드는 콤마 ( , )로 구분됩니다.
+											</li>
+										</ul>
+									</div>
+
+									<div class="align_r mt_10"><a href="#" class="btn b_blue2
+ medium">확인</a><a href="#" class="btn b_gray medium">초기화</a></div>
+									</fieldset>
+
+								</div>
+							
+							</div>
+							<!--// 분석조건 A end -->
+
+							<!-- 제안키워드 트렌드 분석 A start -->
+							<div class="win win_full">
+								<div class="win_head clear2">
+									<span class="win_tit bg_none"> 트렌드 분석결과
+ A</span>
+
+								  <ul class="win_btnset">
+									<li><a href="#" class="btn_sh" title="접기"></a></li>
+									</ul>
+								</div>
+								
+						  <div class="win_contarea align_c">
+									<div class="graph_in" style="height:400px;">
+										그래프 삽입 (100% x 400px)
+									</div>
+								</div>
+							
+							</div>
+							<!--// 제안키워드 트렌드 분석 A end -->
+
+
+							<!-- 제안 키워드 트렌드 분석 랭킹 A start -->
+							<div class="win win_full">
+								<div class="win_head clear2">
+									<span class="win_tit bg_none">트렌드 분석 랭킹 A</span>
+
+								  <ul class="win_btnset">
+									<li><a href="#" class="btn_sh" title="접기"></a></li>
+									</ul>
+								</div>
+								
+						  <div class="win_contarea">
+
+									<!-- 랭크 목록 start -->
+									<div class="rank_top_area compare">
+										<ul class="rank_group full">
+										<li>
+											<div class="rank_top">2013년 12월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 1월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 2월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li style="margin-right: 0px;">
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										</ul>
+									
+									</div>
+									<!--// 랭크 목록 end -->
+
+
+								</div>
+							
+							</div>
+							<!--// 제안 키워드 트렌드 분석 랭킹 A end -->
+
+
+							<!-- VOE 검색결과 A start -->
+							<div class="win win_full">
+								<div class="win_head clear2">
+									<span class="win_tit">VOE 검색결과 A</span><span class="win_date">키워드 : <span class="font_yb">보상</span> / 점유율 : <span class="font_yb">20%</span></span>
+
+									<ul class="win_btnset">
+									<li><a href="#" class="btn_xls" title="액셀파일 내려받기"></a></li>
+									<li><a href="#" class="btn_sh" title="접기"></a></li>
+									</ul>
+								</div>
+								
+								<div class="win_contarea p_0">
+			
+									<!-- tab start -->
+									<div class="tab_wrap clear2">
+										<ul class="tab_win">
+										<li><a href="#" class="tab_tit on" id="tab_01">전체<span>(1,000)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_02">불편·불만<span>(545)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_03">업무상담<span>(321)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_04">건의·제안<span>(134)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_05">칭찬<span>(100)</span></a></li>
+										</ul>
+									</div>
+									<!--// tab end -->
+
+									<!-- Tab 01 : 전체 start -->
+									<div class="tab_cont cont_tab_01">
+
+										<div class="result_list">
+											<ul class="result_group type_voe voe_compare">
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+											</ul>
+
+
+											<!-- 목록정보 start -->
+											<div class="list_info">
+												<span class="float_l">총 <strong>1,123</strong> 건</span><span class="float_r">3/10 페이지</span>
+											</div>
+											<!--// 목록정보 end -->
+
+											<!-- 페이징 start : 해당 페이지 span에 class="on" 삽입 -->
+											<div class="paging">
+												<span class="first"><a href="#">맨 처음</a></span>
+												<span class="prev"><a href="#">이전</a></span>
+
+												<span><a href="#">1</a></span>
+												<span><a href="#">2</a></span>
+												<span class="on">3</span>
+												<span><a href="#">4</a></span>
+												<span><a href="#">5</a></span>
+												<span><a href="#">6</a></span>
+												<span><a href="#">7</a></span>
+												<span><a href="#">8</a></span>
+												<span><a href="#">9</a></span>
+												<span><a href="#">10</a></span>
+
+												<span class="next"><a href="#">다음</a></span>
+												<span class="last"><a href="#">맨 마지막</a></span>
+											</div>
+											<!--// 페이징 end -->
+
+										</div>
+
+									</div>
+									<!--// Tab 01 : 전체 end -->
+
+								</div>
+							
+							</div>
+							<!--// VOE 검색결과 A end -->
+
+						</div>
+						<!--// left contents end -->
+
+
+
+
+						<!-- right contents start -->
+						<div class="float_r win_half">
+
+							<!-- 분석조건 B start -->
+							<div class="win win_full">
+							
+								<div class="win_contarea no_head">
+
+									<p class="nowin_tit">분석조건 B</p>
+
+									<fieldset><legend>분석조건 B</legend>
+									<div class="box_blue">
+
+										<ul class="terms_list type05">
+											<li>
+												<span><label for="select01">조회구분</label></span>
+												<select id="select01" title="조회구분 선택">
+													<option>일별</option>
+													<option>주별</option>
+													<option>월별</option>
+													<option>분기별</option>
+													<option>반기별</option>
+													<option>년별</option>
+												</select>
+											</li>
+											<li class="terms_w_auto2">
+												<span><label for="select02">분석기간</label></span>
+												<select id="select02" class="view_datepicker float_l" title="분석기간 선택">
+													<option>최근1주일</option>
+													<option>최근1개월</option>
+													<option>최근3개월</option>
+													<option>최근6개월</option>
+													<option>최근1년</option>
+													<option>최근3년</option>
+													<option value="addDate">직접입력</option>
+												</select>
+												<div class="add_date a_right">
+													<input type="text" class="w100px date_time white hasDatepicker" title="시작날짜 입력" id="dp1507616747373"><img class="ui-datepicker-trigger" src="images/common/btn_calendar.gif" alt="..." title="..."> ~ <input type="text" class="w100px date_time white hasDatepicker" title="마지막날짜 입력" id="dp1507616747374"><img class="ui-datepicker-trigger" src="images/common/btn_calendar.gif" alt="..." title="...">
+												</div>
+											</li>
+											<li>
+												<span><label for="select03">채널</label></span>
+												<select id="select03" title="채널">
+													<option>고객의소리</option>
+													<option>업무제안</option>
+													<option>매체제안</option>
+													<option>상품제안</option>
+													<option>영업제안</option>
+													<option>경영제도</option>
+												</select>
+											</li>
+											
+											
+										</ul>
+										<hr class="terms_line">
+										<ul class="terms_list type05">
+											<li class="terms_w_auto2">
+												<span><label for="select08">주제어 입력</label></span>
+                                                <select id="select08" title="주제어 선택">
+													<option>직접입력</option>
+                                                    <option>열차지연</option>
+												</select>
+												<input type="text" id="select08" class="white w150p" title="주제어 입력">
+											</li>
+											<li class="terms_w_auto2 mb_5 mt_20" style="margin-right: 0px;">
+												<span><label for="select08">제외어 입력</label></span>
+												<input type="text" id="select08" class="white w300px mb_5" title="제외어 입력">
+												<br>제외키워드는 콤마 ( , )로 구분됩니다.
+											</li>
+										</ul>
+									</div>
+
+									<div class="align_r mt_10"><a href="#" class="btn b_blue2
+ medium">확인</a><a href="#" class="btn b_gray medium">초기화</a></div>
+									</fieldset>
+
+								</div>
+							
+							</div>
+							<!--// 분석조건 B end -->
+
+							<!--  제안키워드 트렌드 분석 B start -->
+							<div class="win win_full">
+								<div class="win_head clear2">
+									<span class="win_tit bg_none"> 트렌드 분석결과
+ B</span>
+
+								  <ul class="win_btnset">
+									<li><a href="#" class="btn_sh" title="접기"></a></li>
+									</ul>
+								</div>
+								
+						  <div class="win_contarea align_c">
+									<div class="graph_in" style="height:400px;">
+										그래프 삽입 (100% x 400px)
+									</div>
+								</div>
+							
+							</div>
+							<!--// 연관도 분석 B end -->
+
+
+
+							<!-- 제안 키워드 트렌드 분석 랭킹 B start -->
+							<div class="win win_full">
+								<div class="win_head clear2">
+									<span class="win_tit bg_none">트렌드 분석 랭킹 B</span>
+
+								  <ul class="win_btnset">
+									<li><a href="#" class="btn_sh" title="접기"></a></li>
+									</ul>
+								</div>
+								
+						  <div class="win_contarea">
+
+									<!-- 랭크 목록 start -->
+									<div class="rank_top_area compare">
+										<ul class="rank_group full">
+										<li>
+											<div class="rank_top">2013년 12월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 1월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 2월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li>
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										<li style="margin-right: 0px;">
+											<div class="rank_top">2014년 3월</div>
+											<div class="rank_list">
+												<ul>
+												<li class="no_1"><span class="rank_no">1</span><a class="rank_key rank_mykey">관리</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li class="no_23"><span class="rank_no">2</span><a href="#" class="rank_key">고객 취급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li class="no_23"><span class="rank_no">3</span><a href="#" class="rank_key">대출이자</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">4</span><a class="rank_key rank_mykey">불만 제기</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">5</span><a href="#" class="rank_key">수수료율</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">6</span><a href="#" class="rank_key">지급</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">7</span><a href="#" class="rank_key">금액</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												<li><span class="rank_no">8</span><a href="#" class="rank_key">계약</a><span class="rank_right">3<img src="images/common/rank_arrow_down.gif" alt="순위 하락"></span></li>
+												<li><span class="rank_no">9</span><a href="#" class="rank_key">고객 서비스</a><span class="rank_right"><img src="images/common/icon_new.gif" alt="New" class="rank_new"></span></li>
+												<li><span class="rank_no">10</span><a href="#" class="rank_key">이체 한도</a><span class="rank_right">3<img src="images/common/rank_arrow_up.gif" alt="순위 상승"></span></li>
+												</ul>
+											</div>
+											<div class="rank_bottom"></div>
+										</li>
+
+										</ul>
+									
+									</div>
+									<!--// 랭크 목록 end -->
+
+
+								</div>
+							
+							</div>
+							<!--// 제안 키워드 트렌드 분석 랭킹 B end -->
+
+							<!-- VOE 검색결과 B start -->
+							<div class="win win_full">
+								<div class="win_head clear2">
+									<span class="win_tit">VOE 검색결과 B</span><span class="win_date">키워드 : <span class="font_yb">보상</span> / 점유율 : <span class="font_yb">20%</span></span>
+
+									<ul class="win_btnset">
+									<li><a href="#" class="btn_xls" title="액셀파일 내려받기"></a></li>
+									<li><a href="#" class="btn_sh" title="접기"></a></li>
+									</ul>
+								</div>
+								
+								<div class="win_contarea p_0">
+			
+									<!-- tab start -->
+									<div class="tab_wrap clear2">
+										<ul class="tab_win">
+										<li><a href="#" class="tab_tit on" id="tab_01_b">전체<span>(1,000)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_02_b">불편·불만<span>(545)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_03_b">업무상담<span>(321)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_04_b">건의·제안<span>(134)</span></a></li>
+										<li><a href="#" class="tab_tit" id="tab_05_b">칭찬<span>(100)</span></a></li>
+										</ul>
+									</div>
+									<!--// tab end -->
+
+									<!-- Tab 01 : 전체 start -->
+									<div class="tab_cont cont_tab_01_b">
+
+										<div class="result_list">
+											<ul class="result_group type_voe voe_compare">
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+												<li>
+													<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+													<a href="#" class="result_doc modal_btn" name="doc_01">유사문서 보기</a>
+												</li>
+											</ul>
+
+											<!-- 목록정보 start -->
+											<div class="list_info">
+												<span class="float_l">총 <strong>1,123</strong> 건</span><span class="float_r">3/10 페이지</span>
+											</div>
+											<!--// 목록정보 end -->
+
+											<!-- 페이징 start : 해당 페이지 span에 class="on" 삽입 -->
+											<div class="paging">
+												<span class="first"><a href="#">맨 처음</a></span>
+												<span class="prev"><a href="#">이전</a></span>
+
+												<span><a href="#">1</a></span>
+												<span><a href="#">2</a></span>
+												<span class="on">3</span>
+												<span><a href="#">4</a></span>
+												<span><a href="#">5</a></span>
+												<span><a href="#">6</a></span>
+												<span><a href="#">7</a></span>
+												<span><a href="#">8</a></span>
+												<span><a href="#">9</a></span>
+												<span><a href="#">10</a></span>
+
+												<span class="next"><a href="#">다음</a></span>
+												<span class="last"><a href="#">맨 마지막</a></span>
+											</div>
+											<!--// 페이징 end -->
+
+										</div>
+
+									</div>
+									<!--// Tab 01 : 전체 end -->
+
+								</div>
+							
+							</div>
+							<!--// VOE 검색결과 B end -->
+
+							<!-- 모달팝업 : 부서 선택 start -->
+							<div class="modal_popup" id="basic-modal-select_div">
+								<div class="win win_full" style="margin-top:0">
+									<div class="win_head clear2">
+										<span class="win_tit bg_none">제안부서 선택</span>
+									</div>
+									
+									<div class="win_contarea clear2 p_0">
+										<div class="select_div_list">
+											<p class="tree_tit"><input type="checkbox" id="tree_0"><label for="tree_0">제안부서 전체</label></p>
+
+											<ul id="tree_list" class="filetree treeview">
+											<li><input type="checkbox" id="tree_1"><label for="tree_1">이사회</label></li>
+											<li class="expandable lastExpandable"><a href="#" class="hitarea expandable-hitarea lastExpandable-hitarea" title="하위목록 펼치기"></a><input type="checkbox" id="tree_2"><label for="tree_2">대표이사</label>
+												<ul style="display: none;">
+												<li class="expandable lastExpandable"><a href="#" class="hitarea expandable-hitarea lastExpandable-hitarea" title="하위목록 펼치기"></a><input type="checkbox" id="tree_2_1"><label for="tree_2_1">상품기획총괄</label>
+													<ul style="display: none;">
+													<li class="expandable"><a href="#" class="hitarea expandable-hitarea" title="하위목록 펼치기"></a><input type="checkbox" id="tree_2_1_1"><label for="tree_2_1_1">상품담당</label>
+														<ul style="display: none;">
+														<li><input type="checkbox" id="tree_2_1_1_1"><label for="tree_2_1_1_1">고객자산운용팀</label></li>
+														<li class="last"><input type="checkbox" id="tree_2_1_1_2"><label for="tree_2_1_1_2">상품기획팀</label></li>
+														</ul>											
+													</li>
+													<li class="last"><input type="checkbox" id="tree_2_1_2"><label for="tree_2_1_2">미디어센터</label></li>
+													</ul>											
+												</li>
+												</ul>											
+											</li>
+											</ul>
+
+										</div>
+									</div>
+									<div class="align_c mt_10"><a href="#" class="btn b_gray medium simplemodal-close">선택부서 반영</a></div>
+								</div>
+							</div>
+							<hr>
+							<!--// 모달팝업 : 부서 선택 end -->
+
+						</div>
+						<!--// right contents end -->
+
+
+						<!-- 모달팝업 : 상세보기 start -->
+						<div class="modal_popup result_view" id="basic-modal-result_01">
+							<div class="win win_full" style="margin-top:0">
+								<div class="win_head clear2">
+									<span class="win_tit bg_none">VOE검색결과 상세보기</span>
+								</div>
+								
+								<div class="win_contarea clear2">
+									<div class="result_view_cont pt_10">
+									<span class="result_date modal_date">2015.07.20</span>
+									현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가
+									</div>
+								</div>
+								<div class="align_c mt_10"><a href="#" class="btn b_gray medium simplemodal-close">확인</a></div>
+							</div>
+						</div>
+						<hr>
+						<!--// 모달팝업 : 상세보기 end -->
+
+						<!-- 모달팝업 : 유사문서 분석결과 start -->
+						<div class="modal_popup doc_view" id="basic-modal-doc_01">
+							<div class="win win_full" style="margin-top:0">
+								<div class="win_head clear2">
+									<span class="win_tit bg_none">유사문서 분석결과</span>
+								</div>
+								
+								<div class="win_contarea clear2">
+									
+									<div class="result_list">
+
+										<ul class="result_group type_voe voe_modal">
+											<li>
+												<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+												<span class="doc_similar">유사도 : 90%</span>
+											</li>
+											<li>
+												<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+												<span class="doc_similar">유사도 : 90%</span>
+											</li>
+											<li>
+												<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+												<span class="doc_similar">유사도 : 90%</span>
+											</li>
+											<li>
+												<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+												<span class="doc_similar">유사도 : 90%</span>
+											</li>
+											<li>
+												<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+												<span class="doc_similar">유사도 : 90%</span>
+											</li>
+											<li>
+												<div class="result_content"><a href="#" name="result_01" class="modal_btn">현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가 현재 <span class="result_keyword">랩계좌</span>는 랩에 편입되는 상품의 성향이 다를 경우 한계좌에 담기 어려워 자산편입에 제한이 있음. 예시, 펀드와 주식은 한 계좌에서 운용불가</a><span class="result_date">2015.07.20</span></div>
+												<span class="doc_similar">유사도 : 90%</span>
+											</li>
+										</ul>
+
+										<!-- 목록정보 start -->
+										<div class="list_info">
+											<span class="float_l">총 <strong>1,123</strong> 건</span><span class="float_r">3/10 페이지</span>
+										</div>
+										<!--// 목록정보 end -->
+
+										<!-- 페이징 start : 해당 페이지 span에 class="on" 삽입 -->
+										<div class="paging">
+											<span class="first"><a href="#">맨 처음</a></span>
+											<span class="prev"><a href="#">이전</a></span>
+
+											<span><a href="#">1</a></span>
+											<span><a href="#">2</a></span>
+											<span class="on">3</span>
+											<span><a href="#">4</a></span>
+											<span><a href="#">5</a></span>
+											<span><a href="#">6</a></span>
+											<span><a href="#">7</a></span>
+											<span><a href="#">8</a></span>
+											<span><a href="#">9</a></span>
+											<span><a href="#">10</a></span>
+
+											<span class="next"><a href="#">다음</a></span>
+											<span class="last"><a href="#">맨 마지막</a></span>
+										</div>
+										<!--// 페이징 end -->
+
+									</div>
+
+								</div>
+								<div class="align_c mt_10"><a href="#" class="btn b_gray medium simplemodal-close">확인</a></div>										
+							</div>
+						</div>
+						<hr>
+						<!--// 모달팝업 : 유사문서 end -->
+
+					</div>
+
+
+
+				</div>
+				<!--// 본문 end -->
+
+				
+			</div>
+			<!--// right area end -->
+	</div>
+
+</div>
+	<!--// content end -->
+
+</div>
+</body>
+</html>

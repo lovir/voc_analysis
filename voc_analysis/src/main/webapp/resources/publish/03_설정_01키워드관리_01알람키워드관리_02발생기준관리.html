@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>서울교통공사 : 관심키워드 관리</title>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/datepicker_kr.js"></script>
+<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
+<script type="text/javascript" src="js/modal.basic.js"></script>
+
+</head>
+<body>
+
+<div id="skipnavi">
+	<ul>
+	<li><a href="#content">주메뉴 바로가기</a></li>
+	<li><a href="#cont_body">본문 바로가기</a></li>
+	</ul>
+</div>
+<hr />
+<div id="wrapper">
+
+	
+
+	
+
+<hr />
+
+
+	<!-- content start -->
+	<div id="content">
+
+		<div class="cont">
+
+			
+
+			<!-- right area start -->
+			<div class="right_area">
+				
+				
+				<!-- 본문 start -->
+				<div class="cont_body" id="cont_body">
+				
+					<div class="cont_head">
+						<span class="cont_tit">키워드 관리</span><span class="cont_desc">관심 키워드 및 알람 키워드에 대한 설정 기능을 제공합니다.</span>
+					</div>
+
+					<!-- main tab start -->
+					<div class="main_tab clear2">
+						<ul>
+						<li><a href="#">관심키워드 관리</a></li>
+						<li class="on"><a href="#">알람키워드 관리</a></li>
+						</ul>
+					</div>
+					<!--// main tab end -->
+
+
+					<!-- sub tab start -->
+					<div class="tab clear2">
+						<ul class="tab_list">
+							<li><a href="#">알람키워드 관리</a></li>
+							<li><a href="#" class="on">발생기준 관리</a></li>
+							<li><a href="#">메일수신자 관리</a></li>
+						</ul>
+					</div>
+					<!--// sub tab end -->
+
+
+
+					<!-- 발생기준 관리 start -->
+					<div class="win win_full">
+						<div class="win_head clear2">
+							<span class="win_tit bg_none">발생기준 관리</span>
+
+							<ul class="win_btnset">
+							<li><a href="#" class="btn_sh" title="접기"></a></li>
+							</ul>
+						</div>
+						
+						<div class="win_contarea">
+
+
+							<!-- 폼 start -->
+							<div class="p_20">
+								<fieldset><legend>발생기준 관리</legend>
+									<table class="tbl_type03" summary="기간, 제외날짜, 발셍레벨 등으로 구성된 발생기준 관리">
+									<caption>발생기준 관리</caption>
+									<colgroup>
+										<col style="width:13%;" />
+										<col />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row"><label for="form01">기간</label></th>
+											<td><input type="text" class="w110px date_time gray" title="시작날짜 입력" id="form01" /> ~ <input type="text" class="w110px date_time gray" title="마지막날짜 입력" /></td>
+										</tr>
+										<tr>
+											<th scope="row"><label for="form02">제외날짜</label></th>
+											<td>
+												<ul>
+													<li><input type="text" class="w110px date_time gray" title="제외날짜 입력" id="form02" />&nbsp;<a href="#" class="btn b_gray ssmall" title="날짜 추가">+추가</a></li>
+													<li><input type="text" class="w110px date_time gray" title="제외날짜 입력" />&nbsp;<a href="#" class="btn b_gray ssmall" title="날짜 삭제">-삭제</a></li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">주말 제외여부</th>
+											<td><input type="checkbox" id="form03" /><label for="form03">제외</label></td>
+										</tr>
+										<tr>
+											<th scope="row"><label for="form04">발생레벨-상</label></th>
+											<td>전일대비 발생 건수가 <input type="text" class="gray w40px align_r" id="form04" title="증가한 발생건수(%) 입력" />% 이상 증가한 경우</td>
+										</tr>
+										<tr>
+											<th scope="row"><label for="form05">발생레벨-중</label></th>
+											<td>전일대비 발생 건수가 <input type="text" class="gray w40px align_r" id="form05" title="증가한 발생건수(%) 입력" />% 이상 증가한 경우</td>
+										</tr>
+										<tr>
+											<th scope="row"><label for="form06">발생레벨-하</label></th>
+											<td>전일대비 발생 건수가 <input type="text" class="gray w40px align_r" id="form06" title="증가한 발생건수(%) 입력" />% 이상 증가한 경우</td>
+										</tr>
+									</tbody>
+									</table>
+
+									<div class="align_r mt_10">
+										<a href="#" class="btn b_blue2
+ medium">저장</a>
+									</div>
+
+								</fieldset>
+							</div>
+							<!--// 폼 end -->
+
+						</div>
+					
+					</div>
+					<!--// 발생기준 관리 end -->
+
+				</div>
+				<!--// 본문 end -->
+
+				
+
+			</div>
+			<!--// right area end -->
+
+		</div>
+
+	</div>
+	<!--// content end -->
+
+</div>
+</body>
+</html>

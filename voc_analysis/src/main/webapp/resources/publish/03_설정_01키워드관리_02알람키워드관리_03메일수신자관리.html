@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>서울교통공사 : 관심키워드 관리</title>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/datepicker_kr.js"></script>
+<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
+<script type="text/javascript" src="js/modal.basic.js"></script>
+
+</head>
+<body>
+
+<div id="skipnavi">
+	<ul>
+	<li><a href="#content">주메뉴 바로가기</a></li>
+	<li><a href="#cont_body">본문 바로가기</a></li>
+	</ul>
+</div>
+<hr />
+<div id="wrapper">
+
+	
+
+	
+
+<hr />
+
+
+	<!-- content start -->
+	<div id="content">
+
+		<div class="cont">
+
+			
+
+			<!-- right area start -->
+			<div class="right_area">
+				
+				
+				<!-- 본문 start -->
+				<div class="cont_body" id="cont_body">
+				
+					<div class="cont_head">
+						<span class="cont_tit">키워드 관리</span><span class="cont_desc">관심 키워드 및 알람 키워드에 대한 설정 기능을 제공합니다.</span>
+					</div>
+
+					<!-- main tab start -->
+					<div class="main_tab clear2">
+						<ul>
+						<li><a href="#">관심키워드 관리</a></li>
+						<li class="on"><a href="#">알람키워드 관리</a></li>
+						</ul>
+					</div>
+					<!--// main tab end -->
+
+
+					<!-- sub tab start -->
+					<div class="tab clear2">
+						<ul class="tab_list">
+							<li><a href="#">알람키워드 관리</a></li>
+							<li><a href="#">발생기준 관리</a></li>
+							<li><a href="#" class="on">메일수신자 관리</a></li>
+						</ul>
+					</div>
+					<!--// sub tab end -->
+
+
+	
+					<!-- 메일수신자 목록 start -->
+					<div class="win win_full">
+						<div class="win_head clear2">
+							<span class="win_tit bg_none">메일수신자 목록</span>
+
+							<ul class="win_btnset">
+							<li><a href="#" class="btn_sh" title="접기"></a></li>
+							</ul>
+						</div>
+						
+						<div class="win_contarea align_c">
+
+							<!-- 목록 start -->
+							<div class="p_20">
+								
+								<div class="clear2">	
+									<fieldset><legend>검색 및 노출건수 설정</legend>
+									<div class="float_l">
+										<select title="검색조건 선택">
+											<option>부서명</option>
+											<option>이름</option>
+											<option>이메일</option>
+										</select>
+										<input type="text" class="w150px gray" title="검색어 입력" /><a href="#" class="btn ssmall b_gray">검색</a>
+									</div>
+
+									<div class="float_r">
+										<select title="출력건수 선택">
+											<option>10 건</option>
+											<option>20 건</option>
+										</select>
+										<a href="#" class="btn ssmall b_gray">확인</a>
+										<a href="#" class="btn medium b_blue2
+" style="margin-left:10px !important;">선택삭제</a>
+									</div>
+									</fieldset>
+								</div>
+
+								<fieldset><legend>메일수신자 목록</legend>
+								<table class="tbl_type04 mt_5" summary="부서명, 이름, 이메일, 등록일로 구성된 메일수신자 목록">
+								<caption>메일수신자 목록</caption>
+								<colgroup>
+									<col style="width:3%;" />
+									<col style="width:8%;" />
+									<col style="width:23%;" />
+									<col style="width:23%;" />
+									<col />
+									<col style="width:15%;" />
+								</colgroup>
+
+								<thead>
+								  <tr>
+									<th scope="col"><input type="checkbox" title="전체선택" /></th>
+									<th scope="col">No.</th>
+									<th scope="col">부서명</th>
+									<th scope="col">이름</th>
+									<th scope="col">이메일</th>
+									<th scope="col">등록일</th>
+								  </tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td>2013-12-31</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td>2013-12-31</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td>2013-12-31</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td>2013-12-31</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td>2013-12-31</td>
+									</tr>
+
+								</tbody>
+								</table>
+								</fieldset>
+
+
+								<!-- 목록정보 start -->
+								<div class="list_info">
+									<span class="float_l">총 <strong>1,123</strong> 건</span><span class="float_r">3/10 페이지</span>
+								</div>
+								<!--// 목록정보 end -->
+
+
+								<!-- 페이징 start : 해당 페이지 span에 class="on" 삽입 -->
+								<div class="paging">
+									<span class="first"><a href="#">맨 처음</a></span>
+									<span class="prev"><a href="#">이전</a></span>
+
+									<span><a href="#">1</a></span>
+									<span><a href="#">2</a></span>
+									<span class="on">3</span>
+									<span><a href="#">4</a></span>
+									<span><a href="#">5</a></span>
+									<span><a href="#">6</a></span>
+									<span><a href="#">7</a></span>
+									<span><a href="#">8</a></span>
+									<span><a href="#">9</a></span>
+									<span><a href="#">10</a></span>
+
+									<span class="next"><a href="#">다음</a></span>
+									<span class="last"><a href="#">맨 마지막</a></span>
+								</div>
+								<!--// 페이징 end -->
+
+							</div>
+							<!--// 목록 end -->
+
+						</div>
+					
+					</div>
+					<!--// 메일수신자 목록 end -->
+
+
+
+
+	
+					<!-- 메일수신자 등록 start -->
+					<div class="win win_full">
+						<div class="win_head clear2">
+							<span class="win_tit bg_none">메일수신자 등록</span>
+
+							<ul class="win_btnset">
+							<li><a href="#" class="btn_sh" title="접기"></a></li>
+							</ul>
+						</div>
+						
+						<div class="win_contarea align_c">
+
+							<!-- 목록 start -->
+							<div class="p_20">
+								
+								<div class="clear2">	
+									<fieldset><legend>검색 및 노출건수 설정</legend>
+									<div class="float_l">
+										<select title="검색조건 선택">
+											<option>부서명</option>
+											<option>이름</option>
+											<option>이메일</option>
+										</select>
+										<input type="text" class="w150px gray" title="검색어 입력" /><a href="#" class="btn ssmall b_gray">검색</a>
+									</div>
+
+									<div class="float_r">
+										<select title="출력건수 선택">
+											<option>10 건</option>
+											<option>20 건</option>
+										</select>
+										<a href="#" class="btn ssmall b_gray">확인</a>
+										<a href="#" class="btn medium b_blue2
+" style="margin-left:10px;">선택삭제</a>
+									</div>
+									</fieldset>
+								</div>
+
+								<fieldset><legend>메일수신자 등록</legend>
+								<table class="tbl_type04 mt_5" summary="부서명, 이름, 이메일, 등록선택으로 구성된 직원 목록">
+								<caption>메일수신자 등록</caption>
+								<colgroup>
+									<col style="width:3%;" />
+									<col style="width:8%;" />
+									<col style="width:23%;" />
+									<col style="width:23%;" />
+									<col />
+									<col style="width:15%;" />
+								</colgroup>
+
+								<thead>
+								  <tr>
+									<th scope="col"><input type="checkbox" title="전체선택" /></th>
+									<th scope="col">No.</th>
+									<th scope="col">부서명</th>
+									<th scope="col">이름</th>
+									<th scope="col">이메일</th>
+									<th scope="col">수신자 등록</th>
+								  </tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td><a href="#" class="btn b_gray small">수신자로 등록</a></td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td><a href="#" class="btn b_gray small">수신자로 등록</a></td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td><a href="#" class="btn b_gray small">수신자로 등록</a></td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td><a href="#" class="btn b_gray small">수신자로 등록</a></td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" /></td>
+										<td>1</td>
+										<td>부서명1</td>
+										<td>김창균</td>
+										<td>kcg@kbstar.com</td>
+										<td><a href="#" class="btn b_gray small">수신자로 등록</a></td>
+									</tr>
+
+								</tbody>
+								</table>
+								</fieldset>
+
+
+								<!-- 목록정보 start -->
+								<div class="list_info">
+									<span class="float_l">총 <strong>1,123</strong> 건</span><span class="float_r">3/10 페이지</span>
+								</div>
+								<!--// 목록정보 end -->
+
+
+								<!-- 페이징 start : 해당 페이지 span에 class="on" 삽입 -->
+								<div class="paging">
+									<span class="first"><a href="#">맨 처음</a></span>
+									<span class="prev"><a href="#">이전</a></span>
+
+									<span><a href="#">1</a></span>
+									<span><a href="#">2</a></span>
+									<span class="on">3</span>
+									<span><a href="#">4</a></span>
+									<span><a href="#">5</a></span>
+									<span><a href="#">6</a></span>
+									<span><a href="#">7</a></span>
+									<span><a href="#">8</a></span>
+									<span><a href="#">9</a></span>
+									<span><a href="#">10</a></span>
+
+									<span class="next"><a href="#">다음</a></span>
+									<span class="last"><a href="#">맨 마지막</a></span>
+								</div>
+								<!--// 페이징 end -->
+
+							</div>
+							<!--// 목록 end -->
+
+						</div>
+					
+					</div>
+					<!--// 메일수신자 목록 end -->
+
+
+
+
+				</div>
+				<!--// 본문 end -->
+
+				
+
+			</div>
+			<!--// right area end -->
+
+		</div>
+
+	</div>
+	<!--// content end -->
+
+</div>
+</body>
+</html>

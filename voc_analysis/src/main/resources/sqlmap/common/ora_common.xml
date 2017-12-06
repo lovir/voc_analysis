@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="common">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+
+	<!--  로그인 정보 가져오기 -->
+	<select id="commonDAO.selectLogin_S" parameterClass="java.util.HashMap" resultClass="egovMap">
+		<![CDATA[
+			SELECT USER_ID, 
+				DEP_CD, 
+				DEP_NM, 
+				USER_NM, 
+				PST_NM 
+			FROM CUT_USER
+			WHERE USER_ID=#loginId#
+		]]>
+	</select>
+
+</sqlMap>

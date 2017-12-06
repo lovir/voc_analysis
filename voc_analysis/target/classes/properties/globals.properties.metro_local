@@ -1,0 +1,52 @@
+#-----------------------------------------------------------------------
+#
+#   globals.properties : \uc2dc\uc2a4\ud15c
+#
+#-----------------------------------------------------------------------
+#   1.  key = value \uad6c\uc870\uc785\ub2c8\ub2e4.
+#   2.  key\uac12\uc740 \uacf5\ubc31\ubb38\uc790\ub97c \ud3ec\ud568\ubd88\uac00, value\uac12\uc740 \uacf5\ubc31\ubb38\uc790\ub97c \uac00\ub2a5
+#   3.  key\uac12\uc73c\ub85c \ud55c\uae00\uc744 \uc0ac\uc6a9\ubd88\uac00,   value\uac12\uc740 \ud55c\uae00\uc0ac\uc6a9\uc774 \uac00\ub2a5
+#   4.  \uc904\uc744 \ubc14\uafc0 \ud544\uc694\uac00 \uc788\uc73c\uba74 '\'\ub97c \ub77c\uc778\uc758 \ub05d\uc5d0 \ucd94\uac00(\ub9cc\uc57d  '\'\ubb38\uc790\ub97c \uc0ac\uc6a9\ud574\uc57c \ud558\ub294 \uacbd\uc6b0\ub294 '\\'\ub97c \uc0ac\uc6a9)
+#   5.  Windows\uc5d0\uc11c\uc758 \ub514\ub809\ud1a0\ub9ac \ud45c\uc2dc : '\\' or '/'  ('\' \uc0ac\uc6a9\ud558\uba74 \uc548\ub428)
+#   6.  Unix\uc5d0\uc11c\uc758 \ub514\ub809\ud1a0\ub9ac \ud45c\uc2dc : '/'
+#   7.  \uc8fc\uc11d\ubb38 \ucc98\ub9ac\ub294  #\uc0ac\uc6a9
+#   8.  value\uac12 \ub4a4\uc5d0 \uc2a4\ud398\uc774\uc2a4\uac00 \uc874\uc7ac\ud558\ub294 \uacbd\uc6b0 \uc11c\ube14\ub9bf\uc5d0\uc11c \ucc38\uc870\ud560\ub54c\ub294 \uc5d0\ub7ec\ubc1c\uc0dd\ud560 \uc218 \uc788\uc73c\ubbc0\ub85c trim()\ud558\uac70\ub098 \ub9c8\uc9c0\ub9c9 \uacf5\ubc31\uc5c6\uc774 properties \uac12\uc744 \uc124\uc815\ud560\uac83
+#-----------------------------------------------------------------------
+
+#\uac1c\ubc1cPC \uc14b\ud305
+#mariner.ip=127.0.01
+#mariner.port=5555
+#mariner.collection=VOC
+#mariner.collection2=SOCIAL
+#mariner.stopword=D:/dq-mariner4-4.1.8.0/resources/korean/data/extractor.stopword.txt
+#mariner.id=super
+
+#\ubd84\uc11d\uc11c\ubc84 \uc14b\ud305
+mariner.ip=172.22.11.16
+#mariner.ip=127.0.0.1
+mariner.port=5555
+mariner.collection=METRO_VOC
+mariner.collection2=METRO_SOCIAL
+mariner.drama_collection=METRO_VOC_DRAMA
+mariner.drama_collection2=METRO_SOCIAL_DRAMA
+mariner.poolwaittimeout=20000
+mariner.minpoolsize=20
+mariner.minpoolsize=20
+	
+#mariner.stopword=/install/user/diquest/mariner4/resources/korean/data/extractor.stopword.txt
+mariner.stopword=D:/metro_mariner4/resources/korean/data/extractor.stopword.txt
+mariner.id=super
+
+#AD\ub85c\uadf8\uc778 URL
+adLogin.url=
+#SSO\ub85c\uadf8\uc778 URL
+ssoLogin.url=
+
+#\uc0ac\uc804\ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc \uc704\uce58
+#dictionary.download.filepath=/install/user/diquest/mariner4/temp
+dictionary.download.filepath=D:/metro_mariner4/temp
+
+#\ud30c\uc77c \uc5c5\ub85c\ub4dc \uc6a9 \uc544\uc774\ub514 \ubc0f \uba54\ud0c0 \uad6c\uc131 \uc815\ubcf4
+callmeta.id.format=%s_%s_%s_%s_%s
+callmeta.date.format=%s-%s-%s
+callmeta.time.format=%s:%s:%s.%s
